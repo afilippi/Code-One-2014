@@ -24,17 +24,20 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+    <div class="wrapper">
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; @DateTime.Now.Year - Code 1 Hackathon</p>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
