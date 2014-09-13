@@ -31,7 +31,7 @@ namespace CodeOneFinancialManagerMK2.Controllers
             return response;
         }
 
-        public PostGoalResponse PostBudget(PostGoalRequest request)
+        public PostGoalResponse PostGoal(PostGoalRequest request)
         {
             PostGoalResponse response = new PostGoalResponse();
             using (BenderEntities context = new BenderEntities())

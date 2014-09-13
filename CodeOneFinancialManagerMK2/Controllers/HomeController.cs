@@ -86,5 +86,10 @@ namespace CodeOneFinancialManagerMK2.Controllers
 
             return View(recentTransactions);
         }
+
+        public ActionResult IFTT()
+        {
+            return View();
+        }
     }
 }

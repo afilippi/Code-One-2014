@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/knockout")
 
 </head>
 <body>
@@ -26,6 +27,7 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
                     <li>@Html.ActionLink("Analysis", "Analysis", "Home")</li>
+                    <li>@Html.ActionLink("If This...Then That", "IFTT", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
