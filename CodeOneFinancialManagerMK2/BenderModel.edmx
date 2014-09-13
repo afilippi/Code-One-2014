@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BenderModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BenderModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="Id" />
@@ -105,6 +105,9 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Full Name" Type="varchar(max)" />
+          <Property Name="Phone Number" Type="varchar" MaxLength="50" />
+          <Property Name="Carrier" Type="varchar(max)" />
+          <Property Name="Email" Type="varchar(max)" />
         </EntityType>
         <EntityContainer Name="BenderModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
@@ -124,6 +127,7 @@
     <edmx:ConceptualModels>
       <Schema Namespace="BenderModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BenderEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Accounts" EntityType="BenderModel.Account" />
           <EntitySet Name="Actions" EntityType="BenderModel.Action" />
           <EntitySet Name="Budgets" EntityType="BenderModel.Budget" />
           <EntitySet Name="CreditCards" EntityType="BenderModel.CreditCard" />
@@ -134,8 +138,17 @@
           <EntitySet Name="Transactions" EntityType="BenderModel.Transaction" />
           <EntitySet Name="Triggers" EntityType="BenderModel.Trigger" />
           <EntitySet Name="Users" EntityType="BenderModel.User" />
-          <EntitySet Name="Accounts" EntityType="BenderModel.Account" />
         </EntityContainer>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="AccountOwnerID" Type="Int32" Nullable="false" />
+          <Property Name="AccountType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Balance" Type="Double" />
+          <Property Name="SavingBalance" Type="Double" />
+        </EntityType>
         <EntityType Name="Action">
           <Key>
             <PropertyRef Name="Id" />
@@ -226,16 +239,9 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Full_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Account">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="AccountOwnerID" Type="Int32" Nullable="false" />
-          <Property Name="AccountType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Balance" Type="Double" />
-          <Property Name="SavingBalance" Type="Double" />
+          <Property Name="Phone_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Carrier" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -243,6 +249,17 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BenderModelStoreContainer" CdmEntityContainer="BenderEntities" >
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="BenderModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="SavingBalance" ColumnName="SavingBalance" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="AccountOwnerID" ColumnName="AccountOwnerID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Actions">
             <EntityTypeMapping TypeName="BenderModel.Action">
               <MappingFragment StoreEntitySet="Action">
@@ -339,18 +356,10 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="BenderModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Carrier" ColumnName="Carrier" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone Number" />
                 <ScalarProperty Name="Full_Name" ColumnName="Full Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Accounts">
-            <EntityTypeMapping TypeName="BenderModel.Account">
-              <MappingFragment StoreEntitySet="Account">
-                <ScalarProperty Name="SavingBalance" ColumnName="SavingBalance" />
-                <ScalarProperty Name="Balance" ColumnName="Balance" />
-                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
-                <ScalarProperty Name="AccountOwnerID" ColumnName="AccountOwnerID" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

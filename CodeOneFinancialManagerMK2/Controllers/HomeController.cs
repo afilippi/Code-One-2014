@@ -75,5 +75,16 @@ namespace CodeOneFinancialManagerMK2.Controllers
             return View();
         }
 
+        public ActionResult Analysis()
+        {
+            List<Transaction> recentTransactions;
+            using (BenderEntities context = new BenderEntities())
+            {
+                DateTime fiveMonthsAgo = DateTime.Now.AddMonths(-5);
+                recentTransactions = context.Transactions.Where(x => x.Date.Value >= fiveMonthsAgo).ToList();
+            }
+
+            return View(recentTransactions);
+        }
     }
 }

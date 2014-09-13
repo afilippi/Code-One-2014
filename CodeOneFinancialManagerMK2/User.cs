@@ -16,5 +16,8 @@ namespace CodeOneFinancialManagerMK2
     {
         public int Id { get; set; }
         public string Full_Name { get; set; }
+        public string Phone_Number { get; set; }
+        public string Carrier { get; set; }
+        public string Email { get; set; }
     }
 }
