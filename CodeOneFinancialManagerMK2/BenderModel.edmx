@@ -105,6 +105,9 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Full Name" Type="varchar(max)" />
+          <Property Name="Phone Number" Type="varchar" MaxLength="50" />
+          <Property Name="Carrier" Type="varchar(max)" />
+          <Property Name="Email" Type="varchar(max)" />
         </EntityType>
         <EntityContainer Name="BenderModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
@@ -226,6 +229,9 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Full_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Phone_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Carrier" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Account">
           <Key>
@@ -339,6 +345,9 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="BenderModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Carrier" ColumnName="Carrier" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone Number" />
                 <ScalarProperty Name="Full_Name" ColumnName="Full Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
