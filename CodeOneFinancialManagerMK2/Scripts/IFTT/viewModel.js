@@ -17,9 +17,27 @@
         { id: 2, fullName: 'Seth Johnson' },
         { id: 3, fullName: 'Emily Johnson' }
     ],
-    selectedTrigger: ko.observable(0),
-    selectedAction: ko.observable(0),
-    selectedUser: ko.observable(0),
+    availableGoals: [
+        { id: 1, description: 'Xbox One' },
+        { id: 2, description: 'Disneyland' },
+        {id: 3, description: 'New Car'}
+    ],
+    availableTimeFrames: [
+        { id: 1, text: 'A Week' },
+        { id: 2, text: 'A Month' }
+    ],
+    availableCategories: [
+        {id: 0, text: 'Anywhere'},
+        {id: 1, text: 'Restaurants'},
+        {id: 2, text: 'Retail'},
+        {id: 3, text: 'Travel'}
+    ],
+    selectedTrigger: ko.observable(),
+    selectedAction: ko.observable(),
+    selectedUser: ko.observable(),
+    selectedGoal: ko.observable(),
+    selectedTimeFrame: ko.observable(),
+    selectedCategory: ko.observable(),
     amount: ko.observable(0)
 
 };
