@@ -17,6 +17,10 @@ Then
             <input type="text" data-bind="value: amount, visible: selectedTrigger() && selectedTrigger().id !== 4" />
             <select data-bind="visible: selectedTrigger() && selectedTrigger().id === 4, options: availableGoals, optionsText: 'description', value: selectedGoal, optionsCaption: 'Choose a Goal...'"></select>
         </li>
+        <li>In what time-period?</li>
+        <select data-bind="options: availableTimeFrames, optionsText: 'text', value: selectedTimeFrame, optionsCaption: 'Choose a Time Period...'"></select>
+        <li>Where?</li>
+        <select data-bind="options: availableCategories, optionsText: 'description', value: selectedCategory, optionsCaption: 'Choose a Category...'"></select>
     </ul>
 </div>
 
