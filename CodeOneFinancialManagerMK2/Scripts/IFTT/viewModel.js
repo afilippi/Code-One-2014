@@ -18,6 +18,8 @@
         { id: 3, fullName: 'Emily Johnson' }
     ],
     selectedTrigger: ko.observable(),
-    selectedAction: ko.observable()
+    selectedAction: ko.observable(),
+    selectedUser: ko.observable(),
+
 };
 ko.applyBindings(IFTTViewModel);
