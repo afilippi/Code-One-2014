@@ -16,33 +16,6 @@ namespace CodeOneFinancialManagerMK2.Controllers
             return View();
         }
 
-        public void MakeTestTransaction()
-        {
-               var fromAddress = new MailAddress("firstnationalautomatedsystem@gmail.com", "Bank");
-               var toAddress = new MailAddress("4025602967@vtext.com", "Huehue");
-               const string fromPassword = "hackathon";
-               const string subject = "Important Message";
-               const string body = "Good Morning, Nerd";
-
-                var smtp = new SmtpClient
-                {
-                    Host = "smtp.gmail.com",
-                    Port = 587,
-                    EnableSsl = true,
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-                };
-                using (var message = new MailMessage(fromAddress, toAddress)
-                {
-                    Subject = subject,
-                    Body = body
-                })
-                {
-                    smtp.Send(message);
-                }
-        }
-
         public ActionResult About()
         {
 

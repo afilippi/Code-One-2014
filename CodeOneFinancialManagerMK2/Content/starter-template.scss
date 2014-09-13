@@ -1,0 +1,133 @@
+@import "colors";
+@import "bourbon/bourbon";
+@import "neat/neat";
+@import "header";
+
+body {
+  margin: 0;
+}
+
+.wrapper {
+  @include outer-container;
+}
+
+.alerts-container {
+  @include border-top-radius(1px);
+  @include border-bottom-radius(1px);
+  @include border-left-radius(1px);
+  @include border-right-radius(1px);
+
+  @include span-columns(3);
+  margin-top: 3em;
+  padding: 0 5px;
+
+  background-color: $light-grey;
+
+  .alerts-header {
+    padding: 0.5em 0;
+    text-align: center;
+
+  }
+
+  .alert {
+    @include border-top-radius(5px);
+    @include border-bottom-radius(5px);
+    @include border-left-radius(5px);
+    @include border-right-radius(5px);
+
+    background: #fff;
+
+    margin-bottom: 0.5em;
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: $grey;
+    font-size: 0.75em;
+
+    height: 4em;
+
+    .alert-indicator {
+      @include border-left-radius(5px);
+      display: inline-block;
+      width: 5px;
+      height: 100%;
+      margin-right: 5px;
+    }
+    
+    .alert-good {
+      background: #00ff00;
+    }
+
+    .alert-warning {
+      background: #FFCC33;
+    }
+
+    .alert-bad {
+      background: #cc3333;
+    }
+
+    .alert-text {
+      display: inline-block;
+      position: relative;
+      transform: translateY(-30%);
+    }
+
+    .date {
+
+    }
+
+  }
+}
+
+.buttons-group {
+  background-color: $light-grey;
+  padding: 5px 5px;
+  margin-bottom: 2em;
+}
+
+
+.side-button {
+  display: block;
+  width:80%;
+  padding: 0.375em 0.25em;
+  margin-top: 0.25em;
+  margin-bottom: 0.5em;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+
+  .button-icon {
+    margin-left: 12%;
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    font-size: 2em;
+    background-color: #bbb;
+  }
+
+  .title {
+    font-variant: small-caps;
+    text-align: center;
+    font-size: 1.25em;
+    margin-top: 0.25em;
+
+  }
+}
+
+
+
+.body-container {
+  @include span-columns(8);
+  background-color: #eee;
+  box-shadow: 0 0 20px #888;
+  height: 900px;
+  margin-top: -0.55em;
+  margin-left: 2em;
+  z-index: 1040;
+}
+
+.body-header {
+  margin-top: 1em;
+  margin-left: 1em;
+  font-size: 1.75em;
+}

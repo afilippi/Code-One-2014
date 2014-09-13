@@ -42,6 +42,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -96,6 +99,15 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Twilio.Api">
+      <HintPath>..\packages\Twilio.3.6.17\lib\3.5\Twilio.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="Twilio.Mvc">
+      <HintPath>..\packages\Twilio.Mvc.3.1.12\lib\3.5\Twilio.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Twilio.Twiml">
+      <HintPath>..\packages\Twilio.TwiML.3.3.3\lib\3.5\Twilio.Twiml.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -234,7 +246,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\dashboard.css" />
-    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -259,6 +270,115 @@
       <DependentUpon>BenderModel.edmx</DependentUpon>
       <LastGenOutput>BenderModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\Sass\starter-template.scss" />
+    <Content Include="Content\Sass\_colors.scss" />
+    <Content Include="Content\Sass\_header.scss" />
+    <Content Include="Content\Sass\_mixins.scss" />
+    <Content Include="Content\Sass\base\_base.scss" />
+    <Content Include="Content\Sass\base\_buttons.scss" />
+    <Content Include="Content\Sass\base\_flashes.scss" />
+    <Content Include="Content\Sass\base\_forms.scss" />
+    <Content Include="Content\Sass\base\_grid-settings.scss" />
+    <Content Include="Content\Sass\base\_lists.scss" />
+    <Content Include="Content\Sass\base\_tables.scss" />
+    <Content Include="Content\Sass\base\_typography.scss" />
+    <Content Include="Content\Sass\base\_variables.scss" />
+    <Content Include="Content\Sass\base\extends\_button.scss" />
+    <Content Include="Content\Sass\base\extends\_clearfix.scss" />
+    <Content Include="Content\Sass\base\extends\_hide-text.scss" />
+    <Content Include="Content\Sass\base\mixins\_flash.scss" />
+    <Content Include="Content\Sass\bourbon\addons\_button.scss" />
+    <Content Include="Content\Sass\bourbon\addons\_clearfix.scss" />
+    <Content Include="Content\Sass\bourbon\addons\_directional-values.scss" />
+    <Content Include="Content\Sass\bourbon\addons\_ellipsis.scss" />
+    <Content Include="Content\Sass\bourbon\addons\_font-family.scss" />
+    <Content Include="Content\Sass\bourbon\addons\_hide-text.scss" />
+    <Content Include="Content\Sass\bourbon\addons\_html5-input-types.scss" />
+    <Content Include="Content\Sass\bourbon\addons\_position.scss" />
+    <Content Include="Content\Sass\bourbon\addons\_prefixer.scss" />
+    <Content Include="Content\Sass\bourbon\addons\_retina-image.scss" />
+    <Content Include="Content\Sass\bourbon\addons\_size.scss" />
+    <Content Include="Content\Sass\bourbon\addons\_timing-functions.scss" />
+    <Content Include="Content\Sass\bourbon\addons\_triangle.scss" />
+    <Content Include="Content\Sass\bourbon\addons\_word-wrap.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_animation.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_appearance.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_backface-visibility.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_background-image.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_background.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_border-image.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_border-radius.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_box-sizing.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_calc.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_columns.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_filter.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_flex-box.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_font-face.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_font-feature-settings.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_hidpi-media-query.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_hyphens.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_image-rendering.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_keyframes.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_linear-gradient.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_perspective.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_placeholder.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_radial-gradient.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_transform.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_transition.scss" />
+    <Content Include="Content\Sass\bourbon\css3\_user-select.scss" />
+    <Content Include="Content\Sass\bourbon\functions\_assign.scss" />
+    <Content Include="Content\Sass\bourbon\functions\_color-lightness.scss" />
+    <Content Include="Content\Sass\bourbon\functions\_flex-grid.scss" />
+    <Content Include="Content\Sass\bourbon\functions\_golden-ratio.scss" />
+    <Content Include="Content\Sass\bourbon\functions\_grid-width.scss" />
+    <Content Include="Content\Sass\bourbon\functions\_modular-scale.scss" />
+    <Content Include="Content\Sass\bourbon\functions\_px-to-em.scss" />
+    <Content Include="Content\Sass\bourbon\functions\_px-to-rem.scss" />
+    <Content Include="Content\Sass\bourbon\functions\_strip-units.scss" />
+    <Content Include="Content\Sass\bourbon\functions\_tint-shade.scss" />
+    <Content Include="Content\Sass\bourbon\functions\_transition-property-name.scss" />
+    <Content Include="Content\Sass\bourbon\functions\_unpack.scss" />
+    <Content Include="Content\Sass\bourbon\helpers\_convert-units.scss" />
+    <Content Include="Content\Sass\bourbon\helpers\_gradient-positions-parser.scss" />
+    <Content Include="Content\Sass\bourbon\helpers\_is-num.scss" />
+    <Content Include="Content\Sass\bourbon\helpers\_linear-angle-parser.scss" />
+    <Content Include="Content\Sass\bourbon\helpers\_linear-gradient-parser.scss" />
+    <Content Include="Content\Sass\bourbon\helpers\_linear-positions-parser.scss" />
+    <Content Include="Content\Sass\bourbon\helpers\_linear-side-corner-parser.scss" />
+    <Content Include="Content\Sass\bourbon\helpers\_radial-arg-parser.scss" />
+    <Content Include="Content\Sass\bourbon\helpers\_radial-gradient-parser.scss" />
+    <Content Include="Content\Sass\bourbon\helpers\_radial-positions-parser.scss" />
+    <Content Include="Content\Sass\bourbon\helpers\_render-gradients.scss" />
+    <Content Include="Content\Sass\bourbon\helpers\_shape-size-stripper.scss" />
+    <Content Include="Content\Sass\bourbon\helpers\_str-to-num.scss" />
+    <Content Include="Content\Sass\bourbon\settings\_asset-pipeline.scss" />
+    <Content Include="Content\Sass\bourbon\settings\_prefixer.scss" />
+    <Content Include="Content\Sass\bourbon\settings\_px-to-em.scss" />
+    <Content Include="Content\Sass\bourbon\_bourbon-deprecated-upcoming.scss" />
+    <Content Include="Content\Sass\bourbon\_bourbon.scss" />
+    <Content Include="Content\Sass\neat\functions\_new-breakpoint.scss" />
+    <Content Include="Content\Sass\neat\functions\_private.scss" />
+    <Content Include="Content\Sass\neat\grid\_fill-parent.scss" />
+    <Content Include="Content\Sass\neat\grid\_grid.scss" />
+    <Content Include="Content\Sass\neat\grid\_media.scss" />
+    <Content Include="Content\Sass\neat\grid\_omega.scss" />
+    <Content Include="Content\Sass\neat\grid\_outer-container.scss" />
+    <Content Include="Content\Sass\neat\grid\_pad.scss" />
+    <Content Include="Content\Sass\neat\grid\_private.scss" />
+    <Content Include="Content\Sass\neat\grid\_reset.scss" />
+    <Content Include="Content\Sass\neat\grid\_row.scss" />
+    <Content Include="Content\Sass\neat\grid\_shift.scss" />
+    <Content Include="Content\Sass\neat\grid\_span-columns.scss" />
+    <Content Include="Content\Sass\neat\grid\_to-deprecate.scss" />
+    <Content Include="Content\Sass\neat\grid\_visual-grid.scss" />
+    <Content Include="Content\Sass\neat\settings\_grid.scss" />
+    <Content Include="Content\Sass\neat\settings\_visual-grid.scss" />
+    <Content Include="Content\Sass\neat\_neat-helpers.scss" />
+    <Content Include="Content\Sass\neat\_neat.scss" />
+    <Content Include="Content\starter-template.scss" />
+    <Content Include="Content\_colors.scss" />
+    <Content Include="Content\_header.scss" />
+    <Content Include="Content\_mixins.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\highcharts.js" />
     <Content Include="Scripts\IFTT\viewModel.js" />
@@ -271,9 +391,13 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-3.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\navigation.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Home\Speech.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -313,7 +437,6 @@
     <Folder Include="Views\Budget\" />
     <Folder Include="Views\Goal\" />
     <Folder Include="Views\Transaction\" />
-    <Folder Include="Views\Trigger\" />
     <Folder Include="Views\Utility\" />
   </ItemGroup>
   <ItemGroup>
