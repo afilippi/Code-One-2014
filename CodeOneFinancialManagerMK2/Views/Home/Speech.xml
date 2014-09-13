@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Response>
+  <Say voice="alice" language="en-US" loop="2">I have you now</Say>
+</Response>

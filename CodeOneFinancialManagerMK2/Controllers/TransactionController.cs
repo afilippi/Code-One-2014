@@ -6,6 +6,7 @@ using System.Web.Mvc;
 //using System.Web.Mail;
 using System.Net.Mail;
 using System.Net;
+using Twilio;
 
 namespace CodeOneFinancialManagerMK2.Controllers
 {
@@ -48,6 +49,44 @@ namespace CodeOneFinancialManagerMK2.Controllers
             {
                 smtp.Send(message);
             }
+        }
+
+        public void MakeTestText()
+        {
+            // Find your Account Sid and Auth Token at twilio.com/user/account
+            string AccountSid = "AC683a7dd9c5c40a812c3a747e2ae8f98c";
+            string AuthToken = "4367acd7e12a1b928eed027a18538aa6";
+            var twilio = new TwilioRestClient(AccountSid, AuthToken);
+
+            
+            var message = twilio.SendMessage("+18559769895", "+14025985573", "Jenny please?! I love you <3");
+
+            Console.WriteLine(message.Sid);
+     
+   
+        }
+
+        public void MakeTestCall()
+        {
+            // Find your Account Sid and Auth Token at twilio.com/user/account
+            string AccountSid = "AC683a7dd9c5c40a812c3a747e2ae8f98c";
+            string AuthToken = "4367acd7e12a1b928eed027a18538aa6";
+            var twilio = new TwilioRestClient(AccountSid, AuthToken);
+
+
+            var options = new CallOptions();
+            options.Url = "http://demo.twilio.com/docs/voice.xml";
+            /*options.Url = "<?xml version='1.0' encoding='UTF-8'?>" +
+    "<Response>" +
+    "<Say voice='woman' language='f'>Chapeau!</Say>" + 
+"</Response>";*/
+            options.To = "+14025985573";
+            options.From = "+18559769895";
+            var call = twilio.InitiateOutboundCall(options);
+
+            Console.WriteLine(call.Sid);
+
+
         }
 
 
