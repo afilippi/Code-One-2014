@@ -20,6 +20,7 @@
     selectedTrigger: ko.observable(0),
     selectedAction: ko.observable(0),
     selectedUser: ko.observable(0),
+    amount: ko.observable(0)
 
 };
 ko.applyBindings(IFTTViewModel);
