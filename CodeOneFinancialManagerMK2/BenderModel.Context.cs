@@ -25,6 +25,7 @@ namespace CodeOneFinancialManagerMK2
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Action> Actions { get; set; }
         public virtual DbSet<Budget> Budgets { get; set; }
         public virtual DbSet<CreditCard> CreditCards { get; set; }
@@ -35,6 +36,5 @@ namespace CodeOneFinancialManagerMK2
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<Trigger> Triggers { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Account> Accounts { get; set; }
     }
 }
