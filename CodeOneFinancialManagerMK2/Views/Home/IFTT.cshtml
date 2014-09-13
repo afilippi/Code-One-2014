@@ -6,6 +6,18 @@ Then
     <select data-bind="options: availableActions, optionsText: 'displayText', value: selectedAction, optionsCaption: 'Choose an Action...'"></select>
 </div>
 
+<div data-bind="visible: IFTTViewModel.selectedTrigger().id > 0">
+    <ul>
+        <li>Who are we talking about? <select data-bind="options: availableUsers, optionsText: 'fullName', value: selectedUser, optionsCaption: 'Choose a User...'"</li>
+        <li>
+            <span data-bind="visible: selectedTrigger().id === 1">Spends more than how much?</span>
+            <span data-bind="visible: selectedTrigger().id === 2">Withdraws more than how much?</span>
+            <span data-bind="visible: selectedTrigger().id === 3">Deposits more than how much?</span>
+            <span data-bind="visible: selectedTrigger().id === 4">Meets which goal?</span>
+        </li>
+    </ul>
+</div>
+
 @section Scripts {
     @Scripts.Render("~/Scripts/IFTT/viewModel.js")
 }

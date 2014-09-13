@@ -17,9 +17,9 @@
         { id: 2, fullName: 'Seth Johnson' },
         { id: 3, fullName: 'Emily Johnson' }
     ],
-    selectedTrigger: ko.observable(),
-    selectedAction: ko.observable(),
-    selectedUser: ko.observable(),
+    selectedTrigger: ko.observable(0),
+    selectedAction: ko.observable(0),
+    selectedUser: ko.observable(0),
 
 };
 ko.applyBindings(IFTTViewModel);
