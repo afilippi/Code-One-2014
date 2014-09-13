@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CodeOneFinancialManagerMK2.Controllers.RequestResponse;
+using System.Net.Mail;
+using System.Net;
 
 namespace CodeOneFinancialManagerMK2.Controllers
 {
@@ -13,11 +16,51 @@ namespace CodeOneFinancialManagerMK2.Controllers
             return View();
         }
 
+        public void MakeTestTransaction()
+        {
+               var fromAddress = new MailAddress("firstnationalautomatedsystem@gmail.com", "Bank");
+               var toAddress = new MailAddress("4025602967@vtext.com", "Huehue");
+               const string fromPassword = "hackathon";
+               const string subject = "Important Message";
+               const string body = "Good Morning, Nerd";
+
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                };
+                using (var message = new MailMessage(fromAddress, toAddress)
+                {
+                    Subject = subject,
+                    Body = body
+                })
+                {
+                    smtp.Send(message);
+                }
+        }
+
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+
+            using (BenderEntities context = new BenderEntities())
+            {
+                String message = context.Users.Where(x => x.Id == 1).FirstOrDefault().Full_Name;
+
+                ViewBag.Message = message;
+            }
+            
+            //ViewBag.Message = "Your application description page.";
 
             return View();
+        }
+
+        public String Temp()
+        {
+            return "Hi there!";
         }
 
         public ActionResult Contact()

@@ -11,12 +11,92 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
 using CodeOneFinancialManagerMK2.Models;
+using CodeOneFinancialManagerMK2.Controllers.RequestResponse;
 
 namespace CodeOneFinancialManagerMK2.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+
+
+
+        public GetAccountResponse GetAccount(GetAccountRequest request)
+        {
+            GetAccountResponse response = new GetAccountResponse();
+            using (BenderEntities context = new BenderEntities())
+            {
+                response.Account = context.Accounts.Where(x => x.Id == request.AccountID).FirstOrDefault();
+            }
+            return response;
+        }
+
+
+
+        public PostAccountResponse PostBudget(PostAccountRequest request)
+        {
+            PostAccountResponse response = new PostAccountResponse();
+            using (BenderEntities context = new BenderEntities())
+            {
+
+                if(context.Accounts.Where(x => x.Id == request.Id).ToList().Count > 0)
+                {
+                    Account account = context.Accounts.Where(x => x.Id == request.Id).FirstOrDefault();
+                    account.AccountOwnerID = request.AccountOwnerID;
+                    account.SavingBalance = request.SavingBalance;
+                    account.Balance = request.Balance;
+                    account.AccountType = request.AccountType;
+                }
+                else
+                {
+                    Account account = new Account();
+                    account.AccountOwnerID = request.AccountOwnerID;
+                    account.SavingBalance = request.SavingBalance;
+                    account.Balance = request.Balance;
+                    account.AccountType = request.AccountType;
+                    context.Accounts.Add(account);
+
+                }
+                context.SaveChanges();
+            }
+
+            return response;
+        }
+
+        public DeleteAccountResponse DeleteAccount(DeleteAccountRequest request)
+        {
+            DeleteAccountResponse response = new DeleteAccountResponse();
+
+            using (BenderEntities context = new BenderEntities())
+            {
+                context.Accounts.Remove(context.Accounts.Where(x => x.Id == request.id).FirstOrDefault());
+                context.SaveChanges();
+            }
+
+            return response;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         private ApplicationUserManager _userManager;
 
         public AccountController()
