@@ -279,9 +279,12 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Home\Speech.xml">
+    <Content Include="Views\Home\Deposit.xml" />
+    <Content Include="Views\Home\GoalMet.xml" />
+    <Content Include="Views\Home\Overspend.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Views\Home\Withdrawal.xml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -13,83 +13,6 @@ namespace CodeOneFinancialManagerMK2.Controllers
     public class TransactionController : Controller
     {
 
-        public class MakeTransactionsRequest
-        {
-            public Nullable<double> Amount;
-            public string Type;
-            public Nullable<System.DateTime> Date;
-            public string Location;
-            public string CardNumber;
-            public Nullable<int> mcc;
-            public Nullable<int> AccountID;
-        }
-
-        public void MakeTestTransaction()
-        {
-            var fromAddress = new MailAddress("firstnationalautomatedsystem@gmail.com", "Bank");
-            var toAddress = new MailAddress("4025602967@vtext.com", "Huehue");
-            const string fromPassword = "hackathon";
-            const string subject = "Important Message";
-            const string body = "Good Morning, Nerd";
-
-            var smtp = new SmtpClient
-            {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-            };
-            using (var message = new MailMessage(fromAddress, toAddress)
-            {
-                Subject = subject,
-                Body = body
-            })
-            {
-                smtp.Send(message);
-            }
-        }
-
-        public void MakeTestText()
-        {
-            // Find your Account Sid and Auth Token at twilio.com/user/account
-            string AccountSid = "AC683a7dd9c5c40a812c3a747e2ae8f98c";
-            string AuthToken = "4367acd7e12a1b928eed027a18538aa6";
-            var twilio = new TwilioRestClient(AccountSid, AuthToken);
-
-            
-            var message = twilio.SendMessage("+18559769895", "+14025985573", "Jenny please?! I love you <3");
-
-            Console.WriteLine(message.Sid);
-     
-   
-        }
-
-        public void MakeTestCall()
-        {
-            // Find your Account Sid and Auth Token at twilio.com/user/account
-            string AccountSid = "AC683a7dd9c5c40a812c3a747e2ae8f98c";
-            string AuthToken = "4367acd7e12a1b928eed027a18538aa6";
-            var twilio = new TwilioRestClient(AccountSid, AuthToken);
-
-
-            var options = new CallOptions();
-            options.Url = "https://raw.githubusercontent.com/afilippi/Code-One-2014/develop/CodeOneFinancialManagerMK2/Views/Home/Speech.xml";
-            /*options.Url = "<?xml version='1.0' encoding='UTF-8'?>" +
-    "<Response>" +
-    "<Say voice='woman' language='f'>Chapeau!</Say>" + 
-"</Response>";*/
-            options.To = "+14025985573";
-            options.From = "+18559769895";
-            var call = twilio.InitiateOutboundCall(options);
-
-            Console.WriteLine(call.Sid);
-
-
-        }
-
-
         public void MakeTransaction(MakeTransactionsRequest request)
         {
             using (BenderEntities context = new BenderEntities())
@@ -114,28 +37,136 @@ namespace CodeOneFinancialManagerMK2.Controllers
                 List<IFTT> iftts;
 
                 switch (request.Type)
+                {
+                    case "Deposit":
+                        iftts = context.IFTTs.Where(x => x.TriggerID == deposit || x.TriggerID == goalMetID).ToList();
+                        ProcessDeposits(iftts);
+                        break;
+                    case "Withdrawal":
+                        iftts = context.IFTTs.Where(x => x.TriggerID == withdrawalID).ToList();
+                        ProcessWithdrawals(iftts);
+                        break;
+                    case "Purchase":
+                        iftts = context.IFTTs.Where(x => x.TriggerID == spendID).ToList();
+                        ProcessPurchases(iftts);
+                        break;          
+                }
+            }
+        }
+
+        public void ProcessWithdrawals(List<IFTT> iftts)
+        {
+
+            using (BenderEntities context = new BenderEntities())
+            {
+                /*Email
+                Text
+                Call
+                Alert*/
+                foreach (IFTT thing in iftts)
+                {
+                    int userID = context.Accounts.Where(x => x.Id == thing.Id).FirstOrDefault().AccountOwnerID;
+                    switch (thing.ActionID)
                     {
-                        case "OverSpend":
-                            iftts = context.IFTTs.Where(x => x.TriggerID == spendID).ToList();
+                        case 1:
+                            MakeEmail(context.Users.Where(x => x.Id == userID).FirstOrDefault().Email, context.Triggers.Where(x => x.Id == thing.TriggerID).FirstOrDefault().Type);
                             break;
-                        case "Withdrawal":
-                            iftts = context.IFTTs.Where(x => x.TriggerID == withdrawalID).ToList();
+                        case 2:
+                            MakeText(context.Users.Where(x => x.Id == userID).FirstOrDefault().Phone_Number, context.Triggers.Where(x => x.Id == thing.TriggerID).FirstOrDefault().Type);
                             break;
-                        case "Deposit":
-                            iftts = context.IFTTs.Where(x => x.TriggerID == deposit).ToList();
+                        case 3:
+                            MakeCall(context.Users.Where(x => x.Id == userID).FirstOrDefault().Phone_Number, context.Triggers.Where(x => x.Id == thing.TriggerID).FirstOrDefault().Type);
                             break;
-                        case "GoalMet":
-                            iftts = context.IFTTs.Where(x => x.TriggerID == goalMetID).ToList();
+                        case 4:
+                            var iftt = context.IFTTs.Where(x => x.Id == thing.Id).FirstOrDefault();
+                            iftt.CurrentAmount = iftt.TriggerAmount;
+                            context.SaveChanges();
                             break;
                     }
+                }
+            }
+        }
 
-               
+        public void ProcessDeposits(List<IFTT> iftts)
+        {
+            using (BenderEntities context = new BenderEntities())
+            {
+                /*Email
+                Text
+                Call
+                Alert*/
+                foreach (IFTT thing in iftts)
+                {
+                    int userID = context.Accounts.Where(x => x.Id == thing.Id).FirstOrDefault().AccountOwnerID;
+                    switch (thing.ActionID)
+                    {
+                        case 1:
+                            MakeEmail(context.Users.Where(x => x.Id == userID).FirstOrDefault().Email, context.Triggers.Where(x => x.Id == thing.TriggerID).FirstOrDefault().Type);
+                            break;
+                        case 2:
+                            MakeText(context.Users.Where(x => x.Id == userID).FirstOrDefault().Phone_Number, context.Triggers.Where(x => x.Id == thing.TriggerID).FirstOrDefault().Type);
+                            break;
+                        case 3:
+                            MakeCall(context.Users.Where(x => x.Id == userID).FirstOrDefault().Phone_Number, context.Triggers.Where(x => x.Id == thing.TriggerID).FirstOrDefault().Type);
+                            break;
+                        case 4:
+                            var iftt = context.IFTTs.Where(x => x.Id == thing.Id).FirstOrDefault();
+                            iftt.CurrentAmount = iftt.TriggerAmount;
+                            context.SaveChanges();
+                            break;
+                    }
+                }
+            }
+        }
 
+        public void ProcessPurchases(List<IFTT> iftts)
+        {
+            using (BenderEntities context = new BenderEntities())
+            {
+                /*Email
+                Text
+                Call
+                Alert*/
+                foreach (IFTT thing in iftts)
+                {
+                    int userID = context.Accounts.Where(x => x.Id == thing.Id).FirstOrDefault().AccountOwnerID;
+                    switch (thing.ActionID)
+                    {
+                        case 1:
+                            MakeEmail(context.Users.Where(x => x.Id == userID).FirstOrDefault().Email, context.Triggers.Where(x => x.Id == thing.TriggerID).FirstOrDefault().Type);
+                            break;
+                        case 2:
+                            MakeText(context.Users.Where(x => x.Id == userID).FirstOrDefault().Phone_Number, context.Triggers.Where(x => x.Id == thing.TriggerID).FirstOrDefault().Type);
+                            break;
+                        case 3:
+                            MakeCall(context.Users.Where(x => x.Id == userID).FirstOrDefault().Phone_Number, context.Triggers.Where(x => x.Id == thing.TriggerID).FirstOrDefault().Type);
+                            break;
+                        case 4:
+                            var iftt = context.IFTTs.Where(x => x.Id == thing.Id).FirstOrDefault();
+                            iftt.CurrentAmount = iftt.TriggerAmount;
+                            context.SaveChanges();
+                            break;
+                    }
+                }
+            }
+        }
 
-
-                 
-
-
+        public void Alert(IFTT iftt, String type)
+        {
+            switch (type)
+            {
+                case "OverSpend":
+                   // iftts = context.IFTTs.Where(x => x.TriggerID == spendID).ToList();
+                    break;
+                case "Withdrawal":
+                   // iftts = context.IFTTs.Where(x => x.TriggerID == withdrawalID).ToList();
+                    break;
+                case "Deposit":
+                   // iftts = context.IFTTs.Where(x => x.TriggerID == deposit).ToList();
+                    break;
+                case "GoalMet":
+                   // iftts = context.IFTTs.Where(x => x.TriggerID == goalMetID).ToList();
+                    break;
             }
         }
 
@@ -164,6 +195,207 @@ namespace CodeOneFinancialManagerMK2.Controllers
 
             return response;
         }
+
+        public class MakeTransactionsRequest
+        {
+            public Nullable<double> Amount;
+            public string Type;
+            public Nullable<System.DateTime> Date;
+            public string Location;
+            public string CardNumber;
+            public Nullable<int> mcc;
+            public Nullable<int> AccountID;
+        }
+
+      
+
+        public void MakeText(String number, String type)
+        {
+            // Find your Account Sid and Auth Token at twilio.com/user/account
+            string AccountSid = "AC683a7dd9c5c40a812c3a747e2ae8f98c";
+            string AuthToken = "4367acd7e12a1b928eed027a18538aa6";
+            var twilio = new TwilioRestClient(AccountSid, AuthToken);
+
+            String messageBody = "";
+
+            switch (type)
+            {
+                case "OverSpend":
+                    messageBody = "Hello, This is First National Informing you that you have overspent on one of your budgets.";
+                    break;
+                case "Withdrawal":
+                    messageBody = "Hello, This is First National Informing you that you have had a withdrawal.";
+                    break;
+                case "Deposit":
+                    messageBody = "Hello, This is First National Informing you that you have had a deposit.";
+                    break;
+                case "GoalMet":
+                    messageBody = "Hello, This is First National Informing you that you have met one of your goals.";
+                    break;
+            } 
+        
+            var message = twilio.SendMessage("+18559769895", number, messageBody);
+
+            Console.WriteLine(message.Sid);  
+        }
+
+
+        public void MakeCall(String number, String type)
+        {
+            // Find your Account Sid and Auth Token at twilio.com/user/account
+            string AccountSid = "AC683a7dd9c5c40a812c3a747e2ae8f98c";
+            string AuthToken = "4367acd7e12a1b928eed027a18538aa6";
+            var twilio = new TwilioRestClient(AccountSid, AuthToken);
+            var options = new CallOptions();           
+            switch (type)
+            {
+                case "OverSpend":
+                    options.Url = "https://raw.githubusercontent.com/afilippi/Code-One-2014/develop/CodeOneFinancialManagerMK2/Views/Home/Overspend.xml";
+                    break;
+                case "Withdrawal":
+                    options.Url = "https://raw.githubusercontent.com/afilippi/Code-One-2014/develop/CodeOneFinancialManagerMK2/Views/Home/WithdrawalSpeech.xml";
+                    break;
+                case "Deposit":
+                    options.Url = "https://raw.githubusercontent.com/afilippi/Code-One-2014/develop/CodeOneFinancialManagerMK2/Views/Home/Deposit.xml";
+                    break;
+                case "GoalMet":
+                    options.Url = "https://raw.githubusercontent.com/afilippi/Code-One-2014/develop/CodeOneFinancialManagerMK2/Views/Home/GoalMet.xml";
+                    break;
+            }         
+            
+            options.To = number;
+            options.From = "+18559769895";
+            var call = twilio.InitiateOutboundCall(options);
+
+            Console.WriteLine(call.Sid);
+        }
+
+        public void MakeEmail(String address, String type)
+        {
+            var fromAddress = new MailAddress("firstnationalautomatedsystem@gmail.com", "Bank");
+            var toAddress = new MailAddress(address, "First National");
+            const string fromPassword = "hackathon";
+            const string subject = "First National Messaging";
+
+            string body = "";        
+
+            switch (type)
+            {
+                case "OverSpend":
+                    body = "Hello, This is First National Informing you that you have overspent on one of your budgets.";
+                    break;
+                case "Withdrawal":
+                    body = "Hello, This is First National Informing you that you have had a withdrawal.";
+                    break;
+                case "Deposit":
+                    body = "Hello, This is First National Informing you that you have had a deposit.";
+                    break;
+                case "GoalMet":
+                    body = "Hello, This is First National Informing you that you have met one of your goals.";
+                    break;
+            } 
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                smtp.Send(message);
+            }
+        }
+
+
+        public void MakeTestEmail()
+        {
+            var fromAddress = new MailAddress("firstnationalautomatedsystem@gmail.com", "Bank");
+            var toAddress = new MailAddress("4025602967@vtext.com", "Huehue");
+            const string fromPassword = "hackathon";
+            const string subject = "Important Message";
+            const string body = "Good Morning, Nerd";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                smtp.Send(message);
+            }
+        }
+
+        public void MakeTestCall()
+        {
+            // Find your Account Sid and Auth Token at twilio.com/user/account
+            string AccountSid = "AC683a7dd9c5c40a812c3a747e2ae8f98c";
+            string AuthToken = "4367acd7e12a1b928eed027a18538aa6";
+            var twilio = new TwilioRestClient(AccountSid, AuthToken);
+
+
+            var options = new CallOptions();
+            options.Url = "https://raw.githubusercontent.com/afilippi/Code-One-2014/develop/CodeOneFinancialManagerMK2/Views/Home/Speech.xml";
+            /*options.Url = "<?xml version='1.0' encoding='UTF-8'?>" +
+    "<Response>" +
+    "<Say voice='woman' language='f'>Chapeau!</Say>" + 
+"</Response>";*/
+            options.To = "+14025985573";
+            options.From = "+18559769895";
+            var call = twilio.InitiateOutboundCall(options);
+
+            Console.WriteLine(call.Sid);
+
+
+        }
+
+        public void MakeTestText(String number, String type)
+        {
+            // Find your Account Sid and Auth Token at twilio.com/user/account
+            string AccountSid = "AC683a7dd9c5c40a812c3a747e2ae8f98c";
+            string AuthToken = "4367acd7e12a1b928eed027a18538aa6";
+            var twilio = new TwilioRestClient(AccountSid, AuthToken);
+
+            String messageBody = "";
+            type = "OverSpend";
+
+            switch (type)
+            {
+                case "OverSpend":
+                    messageBody = "Hello, This is First National Informing you that one of your credit cards has spent $200 while its budget was set to $100.";
+                    break;
+                case "Withdrawal":
+                    messageBody = "Hello, This is First National Informing you that you have had a withdrawal.";
+                    break;
+                case "Deposit":
+                    messageBody = "Hello, This is First National Informing you that you have had a deposit.";
+                    break;
+                case "GoalMet":
+                    messageBody = "Hello, This is First National Informing you that you have met one of your goals.";
+                    break;
+            }
+
+            var message = twilio.SendMessage("+18559769895", "+14025985573", messageBody);
+
+            Console.WriteLine(message.Sid);
+        }
+     
 
 
 
