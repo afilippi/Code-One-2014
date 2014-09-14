@@ -1,0 +1,74 @@
+﻿@import "bourbon/bourbon";
+@import "neat/neat";
+@import "base/base";
+
+
+.body-container{
+    height: 700px;
+}
+
+.actionplan-body {
+    @include outer-container;
+
+}
+
+.trigger-body {
+    @include span-columns(6);
+
+}
+
+.action-body {
+    @include span-columns(6);
+    @include omega();
+}
+
+.item-callout {
+    display: inline;
+    vertical-align: bottom;
+}
+
+.dropdown-container {
+    margin-left: 0.5em;
+}
+
+.item-dropdown {
+    position: relative; 
+    right: 0px;
+    width: 100%;
+}
+
+.trigger-selected-info {
+    @include span-columns(6);
+}
+
+.action-selected-info {
+    @include span-columns(6);
+    @include omega();
+}
+
+.actionplan-creation-body {
+    @include outer-container;
+}
+
+.creation-row {
+    @include outer-container;
+}
+
+.trigger-cell {
+    @include span-columns(6);
+    @include outer-container;
+}
+
+span .dropdown-label {
+    font-weight: bold;
+}
+
+.action-cell {
+    @include span-columns(6);
+    @include omega();
+    @include outer-container;
+}
+
+.cell-content {
+    display: none;
+}

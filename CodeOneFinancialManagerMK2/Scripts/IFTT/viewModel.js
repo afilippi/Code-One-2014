@@ -62,6 +62,147 @@ var IFTTViewModel = {
     targetAmount: ko.observable(),
     selectedAccount: ko.observable()
 
-
 };
+
+var updateTriggerForSpending = function () {
+    $('#trigger-1 .dropdown-label').text('Who\'s Spending?');
+    $('#trigger-2 .dropdown-label').text('Spends How Much?');
+    $('#trigger-3 .dropdown-label').text('In What Time Period?');
+    $('#trigger-4 .dropdown-label').text('What Category?');
+    $('#trigger-1 .cell-content').show();
+    $('#trigger-2 .cell-content').show();
+    $('#trigger-3 .cell-content').show();
+    $('#trigger-4 .cell-content').show();
+};
+
+var updateTriggerForWithdraw = function () {
+    $('#trigger-1 .dropdown-label').text('Who\'s Withdrawing?');
+    $('#trigger-2 .dropdown-label').text('Withdrawl Amount');
+    $('#trigger-1 .cell-content').show();
+    $('#trigger-2 .cell-content').show();
+    $('#trigger-3 .cell-content').hide();
+    $('#trigger-4 .cell-content').hide();
+};
+
+var updateTriggerForDeposit = function () {
+    $('#trigger-1 .dropdown-label').text('Who\'s Depositing?');
+    $('#trigger-2 .dropdown-label').text('Amount of Deposit');
+    $('#trigger-1 .cell-content').show();
+    $('#trigger-2 .cell-content').show();
+    $('#trigger-3 .cell-content').hide();
+    $('#trigger-4 .cell-content').hide();
+};
+
+var updateTriggerForGoal = function () {
+    $('#trigger-1 .dropdown-label').text('Who\'s Goal?');
+    $('#trigger-2 .dropdown-label').text('Which Goal?');
+    $('#trigger-1 .cell-content').show();
+    $('#trigger-2 .cell-content').show();
+    $('#trigger-3 .cell-content').hide();
+    $('#trigger-4 .cell-content').hide();
+};
+
+var updateTriggerForEmpty = function () {
+    $('#trigger-1 .cell-content').hide();
+    $('#trigger-2 .cell-content').hide();
+    $('#trigger-3 .cell-content').hide();
+    $('#trigger-4 .cell-content').hide();
+};
+
+var updateActionForEmail = function () {
+    $('#action-1 .dropdown-label').text('Email Address');
+    $('#action-2 .dropdown-label').text('N/A - Remove');
+    $('#action-3 .dropdown-label').text('N/A - Remove');
+    $('#action-4 .dropdown-label').text('N/A - Remove');
+};
+
+var updateActionForText = function () {
+    $('#action-1 .dropdown-label').text('Phone Number');
+    $('#action-2 .dropdown-label').text('N/A - Remove');
+    $('#action-3 .dropdown-label').text('N/A - Remove');
+    $('#action-4 .dropdown-label').text('N/A - Remove');
+};
+
+var updateActionForCall = function () {
+    $('#action-1 .dropdown-label').text('Phone Number');
+    $('#action-2 .dropdown-label').text('N/A - Remove');
+    $('#action-3 .dropdown-label').text('N/A - Remove');
+    $('#action-4 .dropdown-label').text('N/A - Remove');
+};
+
+var updateActionForAlert = function () {
+    $('#action-1 .dropdown-label').text('N/A - Remove');
+    $('#action-2 .dropdown-label').text('N/A - Remove');
+    $('#action-3 .dropdown-label').text('N/A - Remove');
+    $('#action-4 .dropdown-label').text('N/A - Remove');
+};
+
+var updateActionForTransfer = function () {
+    $('#action-1 .dropdown-label').text('Transfer Amount');
+    $('#action-2 .dropdown-label').text('Destination Account');
+    $('#action-3 .dropdown-label').text('N/A - Remove');
+    $('#action-4 .dropdown-label').text('N/A - Remove');
+};
+
+var updateActionForEmpty = function () {
+    $('#action-1 .dropdown-label').text('Who\'s Goal?');
+    $('#action-2 .dropdown-label').text('Which Goal?');
+    $('#action-3 .dropdown-label').text('N/A - Remove');
+    $('#action-4 .dropdown-label').text('N/A - Remove');
+};
+
+IFTTViewModel.selectedTrigger.subscribe(function (newTrigger) {
+    var triggerId = newTrigger ? newTrigger.id : undefined;
+
+    switch (triggerId) {
+        case 1:
+            updateTriggerForSpending();
+            break;
+        case 2:
+            updateTriggerForWithdraw();
+            break;
+        case 3:
+            updateTriggerForDeposit();
+            break;
+        case 4:
+            updateTriggerForGoal();
+            break;
+        default:
+            updateTriggerForEmpty();
+            console.log('Trigger blank state');
+            break;
+    }
+});
+
+IFTTViewModel.selectedAction.subscribe(function (newAction) {
+    var actionId = newAction ? newAction.id : undefined;
+
+    switch (actionId) {
+        case 1:
+            updateActionForEmail();
+            break;
+        case 2:
+            updateActionForText();
+            break;
+        case 3:
+            updateActionForCall();
+            break;
+        case 4:
+            updateActionForAlert();
+            break;
+        case 5:
+            updateActionForTransfer();
+            break;
+        default:
+            updateActionForEmpty();
+            console.log('Action blank state');
+            break;
+    }
+});
+
+
+IFTTViewModel.selectedAction.subscribe(function (newAction) {
+
+});
+
 ko.applyBindings(IFTTViewModel);
