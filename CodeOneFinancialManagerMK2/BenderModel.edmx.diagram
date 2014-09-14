@@ -13,9 +13,10 @@
         <EntityTypeShape EntityType="BenderModel.IFTT" Width="1.5" PointX="4.75" PointY="3.75" />
         <EntityTypeShape EntityType="BenderModel.MCC" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="BenderModel.TimeFrame" Width="1.5" PointX="0.75" PointY="6.75" />
-        <EntityTypeShape EntityType="BenderModel.Transaction" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="BenderModel.Transaction" Width="1.5" PointX="6.875" PointY="3" />
         <EntityTypeShape EntityType="BenderModel.Trigger" Width="1.5" PointX="2.75" PointY="7.75" />
         <EntityTypeShape EntityType="BenderModel.User" Width="1.5" PointX="4.75" PointY="7.75" />
+        <EntityTypeShape EntityType="BenderModel.Alert" Width="1.5" PointX="7.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

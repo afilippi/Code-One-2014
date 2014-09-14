@@ -62,8 +62,6 @@ namespace CodeOneFinancialManagerMK2.Controllers
             var message = twilio.SendMessage("+18559769895", "+14025985573", "Jenny please?! I love you <3");
 
             Console.WriteLine(message.Sid);
-     
-   
         }
 
         public void MakeTestCall()
@@ -128,14 +126,6 @@ namespace CodeOneFinancialManagerMK2.Controllers
                             iftts = context.IFTTs.Where(x => x.TriggerID == goalMetID).ToList();
                             break;
                     }
-
-               
-
-
-
-                 
-
-
             }
         }
 

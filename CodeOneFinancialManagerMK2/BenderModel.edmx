@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BenderModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BenderModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="Id" />
@@ -21,6 +21,15 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Type" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Alert">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Descrption" Type="varchar(max)" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="AccountID" Type="int" />
         </EntityType>
         <EntityType Name="Budget">
           <Key>
@@ -112,6 +121,7 @@
         <EntityContainer Name="BenderModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Action" EntityType="Self.Action" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Alert" EntityType="Self.Alert" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Budget" EntityType="Self.Budget" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CreditCard" EntityType="Self.CreditCard" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Goals" EntityType="Self.Goals" Schema="dbo" store:Type="Tables" />
@@ -138,6 +148,7 @@
           <EntitySet Name="Transactions" EntityType="BenderModel.Transaction" />
           <EntitySet Name="Triggers" EntityType="BenderModel.Trigger" />
           <EntitySet Name="Users" EntityType="BenderModel.User" />
+          <EntitySet Name="Alerts" EntityType="BenderModel.Alert" />
         </EntityContainer>
         <EntityType Name="Account">
           <Key>
@@ -242,6 +253,15 @@
           <Property Name="Phone_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Carrier" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Alert">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Descrption" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="AccountID" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -360,6 +380,16 @@
                 <ScalarProperty Name="Carrier" ColumnName="Carrier" />
                 <ScalarProperty Name="Phone_Number" ColumnName="Phone Number" />
                 <ScalarProperty Name="Full_Name" ColumnName="Full Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Alerts">
+            <EntityTypeMapping TypeName="BenderModel.Alert">
+              <MappingFragment StoreEntitySet="Alert">
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Descrption" ColumnName="Descrption" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
