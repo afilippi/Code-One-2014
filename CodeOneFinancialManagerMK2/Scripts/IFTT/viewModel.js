@@ -1,4 +1,17 @@
-﻿var IFTTViewModel = {
+﻿ko.bindingHandlers.currency = {
+    symbol: ko.observable('$'),
+    update: function (element, valueAccessor, allBindingsAccessor) {
+        return ko.bindingHandlers.text.update(element, function () {
+            var value = +(ko.utils.unwrapObservable(valueAccessor()) || 0),
+                symbol = ko.utils.unwrapObservable(allBindingsAccessor().symbol === undefined
+                            ? allBindingsAccessor().symbol
+                            : ko.bindingHandlers.currency.symbol);
+            return symbol + value.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
+        });
+    }
+};
+
+var IFTTViewModel = {
     availableTriggers: [
         { id: 1, text: 'OverSpend', displayText: 'Someone spends too much money' },
         { id: 2, text: 'Withdrawal', displayText: 'Someone withdraws money' },
@@ -32,13 +45,23 @@
         {id: 2, text: 'Retail'},
         {id: 3, text: 'Travel'}
     ],
+    availableAccounts: [
+        "Savings",
+        "Retirement",
+        "Disneyland"
+    ],
     selectedTrigger: ko.observable(),
     selectedAction: ko.observable(),
     selectedUser: ko.observable(),
     selectedGoal: ko.observable(),
     selectedTimeFrame: ko.observable(),
     selectedCategory: ko.observable(),
-    amount: ko.observable(0)
+    amount: ko.observable(0),
+    email: ko.observable(),
+    phone: ko.observable(),
+    targetAmount: ko.observable(),
+    selectedAccount: ko.observable()
+
 
 };
 ko.applyBindings(IFTTViewModel);

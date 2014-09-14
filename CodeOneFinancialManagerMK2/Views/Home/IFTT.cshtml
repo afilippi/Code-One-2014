@@ -1,29 +1,108 @@
-﻿<h2>Create a new</h2>
+﻿<style>
+    .body-container{
+        height: 700px;
+    }
+</style>
+
+<h2>Create a New <span style="color: #0D723C;">Action Plan</span></h2>
+<hr />
 <div class="span12">
-If 
-    <select data-bind="options: availableTriggers, optionsText: 'displayText', value: selectedTrigger, optionsCaption: 'Choose a Trigger...'"></select>
-Then
-    <select data-bind="options: availableActions, optionsText: 'displayText', value: selectedAction, optionsCaption: 'Choose an Action...'"></select>
+    <div style="width: 49%; float: left;">
+        <h2 style="display: inline; vertical-align: bottom;">If&nbsp;</h2>
+        <span class="custom-dropdown custom-dropdown--white" style="width: 91.5%">
+            <select class="custom-dropdown__select custom-dropdown__select--white" style="position: relative; right: 0px; width: 100%" data-bind="options: availableTriggers, optionsText: 'displayText', value: selectedTrigger, optionsCaption: 'Choose a Trigger...'"></select>
+        </span>
+    </div>
+    <div style="width: 49%; float: right;">
+        <h2 style="display: inline; vertical-align: bottom;">&hellip;Then&nbsp;</h2>
+        <span class="custom-dropdown custom-dropdown--white">
+            <select class="custom-dropdown__select custom-dropdown__select--white" data-bind="options: availableActions, optionsText: 'displayText', value: selectedAction, optionsCaption: 'Choose an Action...'"></select>
+        </span>
+
+    </div>
+
 </div>
 
-<div data-bind="visible: IFTTViewModel.selectedTrigger()">
-    <ul>
-        <li>Who are we talking about? <select data-bind="options: availableUsers, optionsText: 'fullName', value: selectedUser, optionsCaption: 'Choose a User...'"></select></li>
-        <li>
-            <span data-bind="visible: IFTTViewModel.selectedTrigger() && IFTTViewModel.selectedTrigger().id === 1">Spends more than how much?</span>
-            <span data-bind="visible: IFTTViewModel.selectedTrigger() && IFTTViewModel.selectedTrigger().id === 2">Withdraws more than how much?</span>
-            <span data-bind="visible: IFTTViewModel.selectedTrigger() && IFTTViewModel.selectedTrigger().id === 3">Deposits more than how much?</span>
-            <span data-bind="visible: IFTTViewModel.selectedTrigger() && IFTTViewModel.selectedTrigger().id === 4">Meets which goal?</span>
-            <input type="text" data-bind="value: amount, visible: selectedTrigger() && selectedTrigger().id !== 4" />
-            <select data-bind="visible: selectedTrigger() && selectedTrigger().id === 4, options: availableGoals, optionsText: 'description', value: selectedGoal, optionsCaption: 'Choose a Goal...'"></select>
-        </li>
-        <li>In what time-period?</li>
-        <select data-bind="options: availableTimeFrames, optionsText: 'text', value: selectedTimeFrame, optionsCaption: 'Choose a Time Period...'"></select>
-        <li>Where?</li>
-        <select data-bind="options: availableCategories, optionsText: 'description', value: selectedCategory, optionsCaption: 'Choose a Category...'"></select>
-    </ul>
+<div data-bind="visible: IFTTViewModel.selectedTrigger()" style="margin-top: 10px; width: 49%; float: left;">
+    <table>
+        <tr>
+            <td>
+                <label data-bind="visible: IFTTViewModel.selectedTrigger() && IFTTViewModel.selectedTrigger().id === 1">Who's spending?</label>
+                <label data-bind="visible: IFTTViewModel.selectedTrigger() && IFTTViewModel.selectedTrigger().id === 2">Who's withdrawing?</label>
+                <label data-bind="visible: IFTTViewModel.selectedTrigger() && IFTTViewModel.selectedTrigger().id === 3">Who's depositing?</label>
+                <label data-bind="visible: IFTTViewModel.selectedTrigger() && IFTTViewModel.selectedTrigger().id === 4">Who's goal?</label>
+            </td>
+            <td style="text-align: right;">
+                <span class="custom-dropdown custom-dropdown--white"><select class="custom-dropdown__select custom-dropdown__select--white" data-bind="options: availableUsers, optionsText: 'fullName', value: selectedUser, optionsCaption: 'Choose a User...'"></select></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label data-bind="visible: IFTTViewModel.selectedTrigger() && IFTTViewModel.selectedTrigger().id === 1">Spends how much?</label>
+                <label data-bind="visible: IFTTViewModel.selectedTrigger() && IFTTViewModel.selectedTrigger().id === 2">Withdraws how much?</label>
+                <label data-bind="visible: IFTTViewModel.selectedTrigger() && IFTTViewModel.selectedTrigger().id === 3">Deposits how much?</label>
+                <label data-bind="visible: IFTTViewModel.selectedTrigger() && IFTTViewModel.selectedTrigger().id === 4">Meets which goal?</label>
+            </td>
+            <td style="text-align: right;">
+                <input type="text" data-bind="currency: amount, value: amount, visible: selectedTrigger() && selectedTrigger().id !== 4" />
+
+                <span data-bind="visible: selectedTrigger() && selectedTrigger().id === 4" class="custom-dropdown custom-dropdown--white">
+                    <select class="custom-dropdown__select custom-dropdown__select--white" data-bind="options: availableGoals, optionsText: 'description', value: selectedGoal, optionsCaption: 'Choose a Goal...'"></select>
+                </span>
+            </td>
+        </tr>
+        <tr data-bind="if: selectedTrigger() && selectedTrigger().id === 1">
+            <td>
+                <label>In what time period?</label>
+            </td>
+            <td style="text-align: right;">
+                <span class="custom-dropdown custom-dropdown--white"><select class="custom-dropdown__select custom-dropdown__select--white" data-bind="options: availableTimeFrames, optionsText: 'text', value: selectedTimeFrame, optionsCaption: 'Choose a Period...'"></select></span>
+            </td>
+        </tr>
+        <tr data-bind="if: selectedTrigger() && selectedTrigger().id === 1">
+            <td>
+                <label>Where?</label>
+            </td>
+            <td style="text-align: right;">
+                <span class="custom-dropdown custom-dropdown--white"><select class="custom-dropdown__select custom-dropdown__select--white" data-bind="options: availableCategories, optionsText: 'text', value: selectedCategory, optionsCaption: 'Choose a Category...'"></select></span>
+            </td>
+        </tr>
+    </table>
 </div>
+
+<div data-bind="visible: selectedAction()" style="float: right; width: 49%;">
+    <table>
+        <tr data-bind="if: selectedAction() && selectedAction().id === 1">
+            <td><label>Your email, please?</label></td>
+            <td><input type="text" data-bind="value: email" /></td>
+        </tr>
+        <tr data-bind="if: selectedAction() && (selectedAction().id === 2 || selectedAction().id === 3)">
+            <td><label>Your phone, please?</label></td>
+            <td><input type="text" data-bind="value: email" /></td>
+        </tr>
+        <tr data-bind="if: selectedAction() && selectedAction().id === 5">
+            <td><label>How much?</label></td>
+            <td><input type="text" data-bind="value: targetAmount" placeholder="Amount or Percent" /></td>
+        </tr>
+        <tr data-bind="if: selectedAction() && selectedAction().id === 5">
+            <td><label>To which account?</label></td>
+            <td><span class="custom-dropdown custom-dropdown--white"><select class="custom-dropdown__select custom-dropdown__select--white" data-bind="options: availableAccounts, value: selectedAccount"></select></span></td>
+        </tr>
+    </table>
+</div>
+<br />
+<br />
+<div data-bind="visible: selectedAction() && selectedAction() && (phone() || email())">
+    <h2>Recap</h2>
+    If <span data-bind="text: selectedUser().fullName"></span> <span data-bind="visible: selectedTrigger() && selectedTrigger().id === 1">spends more than $<span data-bind="text: amount()"></span></span> 
+    <span data-bind="visible: selectedTrigger() && selectedTrigger().id === 2">withdraws more than $<span data-bind="text: amount()"></span></span>
+    <span data-bind="visible: selectedTrigger() && selectedTrigger().id === 3">deposits more than $<span data-bind="text: amount()"></span></span>
+    <span data-bind="visible: selectedTrigger() && selectedTrigger().id === 4">meets his or her <span data-bind="text: selectedGoal().description"></span> goal</span>
+</div>
+
+<button style="background-color: #ec6b2f; position:absolute; bottom: 100px; right: 215px;">Make my Plan!</button>
 
 @section Scripts {
     @Scripts.Render("~/Scripts/IFTT/viewModel.js")
+    @Styles.Render("~/Content/dropdown.css")
 }

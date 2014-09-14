@@ -18,7 +18,7 @@
 
 <body>
     <header class="navigation">
-        <div class="navigation-wrapper">
+        <div class="navigation-wrapper" style="max-width: 85%">
             <a href="javascript:void(0)" class="logo">
                 <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="">
             </a>
@@ -34,7 +34,7 @@
         </div>
     </header>
 
-    <div class="wrapper">
+    <div class="wrapper" style="max-width: 85%">
         <div class="alerts-container">
             <div class="alerts-header">
                 <h4>Alerts</h4>
@@ -61,15 +61,8 @@
             </div> <!-- alert group -->
         </div>
 
-        <div class="body-container">
-            <div class="row">
-                <div class="body-header">
-                    Account Balance
-                </div>
-            </div>
-            <div class="row">
+        <div class="body-container" style="padding: 30px">
                 @RenderBody()
-            </div>
         </div>
     </div>
 
