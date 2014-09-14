@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CodeOneFinancialManagerMK2.Controllers.RequestResponse;
+using Newtonsoft.Json;
+
 
 namespace CodeOneFinancialManagerMK2.Controllers
 {
@@ -11,7 +13,8 @@ namespace CodeOneFinancialManagerMK2.Controllers
     {
 
 
-        public GetTriggerResponse GetTrigger(GetTriggerRequest request)
+        [HttpPost]
+        public ActionResult GetTrigger(GetTriggerRequest request)
         {
             GetTriggerResponse response = new GetTriggerResponse();
             using (BenderEntities context = new BenderEntities())
@@ -33,33 +36,42 @@ namespace CodeOneFinancialManagerMK2.Controllers
 
                 response.Triggers = triggers;
             }
-            return response;
+            return Json(response, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
         public PostTriggerResponse PostTrigger(PostTriggerRequest request)
         {
             PostTriggerResponse response = new PostTriggerResponse();
-            using (BenderEntities context = new BenderEntities())
+            try
             {
-                IFTT trigger = new IFTT();
-                trigger.TriggerAmount = request.TriggerAmount;
-                trigger.TimeFrameID = context.TimeFrames.Where(x => x.Type.Equals(request.TimeFrame)).FirstOrDefault().Id;
-                trigger.StartDate = DateTime.Now;
-                trigger.CurrentAmount = request.CurrentAmount;
-                trigger.AccountID = request.AccountID;
-                trigger.ActionID = context.Actions.Where(x => x.Type.Equals(request.ActionID)).FirstOrDefault().Id;
-                trigger.MCC = context.MCCs.Where(x => x.Type.Equals(request.MCC)).FirstOrDefault().Id;
-                trigger.TriggerID = context.Triggers.Where(x => x.Type.Equals(request.Trigger)).FirstOrDefault().Id;
+                using (BenderEntities context = new BenderEntities())
+                {
+                    IFTT trigger = new IFTT();
+                    trigger.Id = context.IFTTs.Count() + 1;
+                    trigger.TriggerAmount = request.TriggerAmount;
+                    trigger.TimeFrameID = context.TimeFrames.Where(x => x.Type.Equals(request.TimeFrame)).FirstOrDefault().Id;
+                    trigger.StartDate = DateTime.Now;
+                    trigger.CurrentAmount = request.CurrentAmount;
+                    trigger.AccountID = request.AccountID;
+                    trigger.ActionID = context.Actions.Where(x => x.Type.Equals(request.ActionID)).FirstOrDefault().Id;
+                    trigger.MCC = context.MCCs.Where(x => x.Type.Equals(request.MCC)).FirstOrDefault().Id;
+                    trigger.TriggerID = context.Triggers.Where(x => x.Type.Equals(request.Trigger)).FirstOrDefault().Id;
 
 
-                context.IFTTs.Add(trigger);
-                context.SaveChanges();
+                    context.IFTTs.Add(trigger);
+                    context.SaveChanges();
+                }
+            }
+            catch(Exception e)
+            {
+
             }
 
             return response;
         }
 
-        public DeleteTriggerResponse DeleteGoal(DeleteTriggerRequest request)
+        public DeleteTriggerResponse DeleteTrigger(DeleteTriggerRequest request)
         {
             DeleteTriggerResponse response = new DeleteTriggerResponse();
             using (BenderEntities context = new BenderEntities())

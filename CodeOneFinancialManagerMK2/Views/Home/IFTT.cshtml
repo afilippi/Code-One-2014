@@ -92,15 +92,16 @@
 </div>
 <br />
 <br />
-<div data-bind="visible: selectedAction() && selectedAction() && (phone() || email())">
+
+@*<div data-bind="visible: selectedAction() && selectedAction() && (phone() || email())">
     <h2>Recap</h2>
     If <span data-bind="text: selectedUser().fullName"></span> <span data-bind="visible: selectedTrigger() && selectedTrigger().id === 1">spends more than $<span data-bind="text: amount()"></span></span> 
     <span data-bind="visible: selectedTrigger() && selectedTrigger().id === 2">withdraws more than $<span data-bind="text: amount()"></span></span>
     <span data-bind="visible: selectedTrigger() && selectedTrigger().id === 3">deposits more than $<span data-bind="text: amount()"></span></span>
     <span data-bind="visible: selectedTrigger() && selectedTrigger().id === 4">meets his or her <span data-bind="text: selectedGoal().description"></span> goal</span>
-</div>
+</div>*@
 
-<button style="background-color: #ec6b2f; position:absolute; bottom: 100px; right: 215px;">Make my Plan!</button>
+<button style="background-color: #ec6b2f; position:absolute; bottom: 100px; right: 215px;" data-bind="click: createActionPlan">Make my Plan!</button>
 
 @section Scripts {
     @Scripts.Render("~/Scripts/IFTT/viewModel.js")
