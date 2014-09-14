@@ -581,10 +581,18 @@ body {
   display: block;
   margin-right: 2.35765%;
   width: 65.88078%;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
   background-color: #eee;
   box-shadow: 0 0 20px #888;
   height: 900px;
-  margin-top: -0.55em;
+  margin-top: -0.65em;
   margin-left: 2em;
   z-index: 1040; }
   .body-container:last-child {
