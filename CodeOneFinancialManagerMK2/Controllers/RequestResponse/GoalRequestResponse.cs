@@ -9,22 +9,24 @@ namespace CodeOneFinancialManagerMK2.Controllers.RequestResponse
 {
     public class GetGoalRequest
     {
-        public int AccountID;
+        public int AccountID { get; set; }
     }
 
+    [Serializable]
     public class GetGoalResponse
     {
-        public List<UserGoal> Goals;
+        public List<UserGoal> Goals { get; set; }
     }
 
+    [Serializable]
     public class UserGoal
     {
-        public int id;
-        public float Amount;
-        public DateTime Date;
-        public String Description;
-        public float SavedAmount;
-        public int AccountID;
+        public int id { get; set; }
+        public float Amount { get; set; }
+        public DateTime Date { get; set; }
+        public String Description { get; set; }
+        public float SavedAmount { get; set; }
+        public int AccountID { get; set; }
     }
 
     [Serializable]

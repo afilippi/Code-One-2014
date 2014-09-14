@@ -10,8 +10,8 @@ namespace CodeOneFinancialManagerMK2.Controllers
     public class GoalController : Controller
     {
 
-
-        public GetGoalResponse GetGoal(GetGoalRequest request)
+        [HttpPost]
+        public ActionResult GetGoal(GetGoalRequest request)
         {
             GetGoalResponse response = new GetGoalResponse();
             using (BenderEntities context = new BenderEntities())
@@ -28,25 +28,33 @@ namespace CodeOneFinancialManagerMK2.Controllers
 
                 response.Goals = goals;
             }
-            return response;
+             return Json(response, JsonRequestBehavior.AllowGet);;
         }
 
 
         [HttpPost]
         public PostGoalResponse PostGoal(PostGoalRequest request)
         {
-            PostGoalResponse response = new PostGoalResponse();
-            using (BenderEntities context = new BenderEntities())
-            {
-                Goal goal = new Goal();
 
-                goal.AccountID = request.AccountID;
-                goal.Amount = request.Amount;
-                goal.Date = request.Date;
-                goal.Description = request.Description;
-                goal.SavedAmount = request.SavedAmount;         
-                context.Goals.Add(goal);
-                context.SaveChanges();
+            PostGoalResponse response = new PostGoalResponse();
+            try
+            {
+                using (BenderEntities context = new BenderEntities())
+                {
+                    Goal goal = new Goal();
+                    goal.Id = context.Goals.Count() + 1;
+                    goal.AccountID = request.AccountID;
+                    goal.Amount = request.Amount;
+                    goal.Date = request.Date;
+                    goal.Description = request.Description;
+                    goal.SavedAmount = request.SavedAmount;
+                    context.Goals.Add(goal);
+                    context.SaveChanges();
+                }
+            }
+            catch(Exception e)
+            {
+
             }
 
             return response;

@@ -51,6 +51,37 @@ namespace CodeOneFinancialManagerMK2.Controllers
             }
         }
 
+        [HttpPost]
+        public void MakeDemText()
+        {
+            // Find your Account Sid and Auth Token at twilio.com/user/account
+            string AccountSid = "AC683a7dd9c5c40a812c3a747e2ae8f98c";
+            string AuthToken = "4367acd7e12a1b928eed027a18538aa6";
+            var twilio = new TwilioRestClient(AccountSid, AuthToken);
+            String type = "OverSpend";
+            String messageBody = "";
+
+            switch (type)
+            {
+                case "OverSpend":
+                    messageBody = "Hello, This is First National Informing you that one of your credit cards has spent $200 while its budget was set to $100.";
+                    break;
+                case "Withdrawal":
+                    messageBody = "Hello, This is First National Informing you that you have had a withdrawal.";
+                    break;
+                case "Deposit":
+                    messageBody = "Hello, This is First National Informing you that you have had a deposit.";
+                    break;
+                case "GoalMet":
+                    messageBody = "Hello, This is First National Informing you that you have met one of your goals.";
+                    break;
+            }
+
+            var message = twilio.SendMessage("+18559769895", "+14025985573", messageBody);
+
+            Console.WriteLine(message.Sid);
+        }
+
         public void MakeTestText()
         {
             // Find your Account Sid and Auth Token at twilio.com/user/account

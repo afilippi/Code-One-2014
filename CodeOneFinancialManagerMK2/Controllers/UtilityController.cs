@@ -91,7 +91,7 @@ namespace CodeOneFinancialManagerMK2.Controllers
         [Serializable]
         public class GetAlertRequest
         {
-           public int AccountID;        
+            public int AccountID { get; set; }       
         }
 
         [Serializable]
