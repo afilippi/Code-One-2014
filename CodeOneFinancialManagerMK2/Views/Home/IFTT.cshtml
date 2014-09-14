@@ -1,20 +1,22 @@
 ﻿<h2>Create a New <span style="color: #0D723C;">Action Plan</span></h2>
 <hr />
 <div class="actionplan-body">
-    <div class="trigger-body">
-        <div class="header-wrapper">
-            <h2 class="item-callout">If</h2>
+    <div class="iftt-wrapper">
+        <div class="trigger-body">
+            <div class="header-wrapper">
+                <h2 class="item-callout">If</h2>
+            </div>
+            <div class="select-wrapper">
+                <select class="dropdown-select" data-bind="options: availableTriggers, optionsText: 'displayText', value: selectedTrigger, optionsCaption: 'Choose a Trigger...'"></select>
+            </div>
         </div>
-        <div class="select-wrapper">
-            <select class="dropdown-select" data-bind="options: availableTriggers, optionsText: 'displayText', value: selectedTrigger, optionsCaption: 'Choose a Trigger...'"></select>
-        </div>
-    </div>
-    <div class="action-body">
-        <div class="header-wrapper">
-            <h2 class="item-callout">&hellip;Then</h2>
-        </div>
-        <div class="select-wrapper">
-            <select data-bind="options: availableActions, optionsText: 'displayText', value: selectedAction, optionsCaption: 'Choose an Action...'"></select>
+        <div class="action-body">
+            <div class="header-wrapper">
+                <h2 class="item-callout">&hellip;Then</h2>
+            </div>
+            <div class="select-wrapper">
+                <select data-bind="options: availableActions, optionsText: 'displayText', value: selectedAction, optionsCaption: 'Choose an Action...'"></select>
+            </div>
         </div>
     </div>
 
@@ -23,29 +25,39 @@
         <div class="creation-row">
             <div id="trigger-1" class="trigger-cell">
                 <span class="dropdown-label"></span>
-                <span><select data-bind="options: availableUsers, optionsText: 'fullName', value: selectedUser, optionsCaption: 'Choose a User...'"></select></span>
+                <span class="input-wrapper">
+                    <select class="dropdown-select" data-bind="options: availableUsers, optionsText: 'fullName', value: selectedUser, optionsCaption: 'Choose a User...'"></select>
+                </span>
             </div>
             <div id="action-1" class="action-cell">
                 <span class="dropdown-label"></span>
+                <span class="input-wrapper">
+                    <input id="action-1-contactinfo" type="text" data-bind="value: email" />
+                    <input id="action-1-amount" type="text" data-bind="value: targetAmount" placeholder="Amount or Percent" />
+                </span>
             </div>
         </div>
         <div class="creation-row">
             <div id="trigger-2" class="trigger-cell">
                 <span class="dropdown-label"></span>
-                <input type="text" data-bind="currency: amount, value: amount, visible: selectedTrigger() && selectedTrigger().id !== 4" />
-
-                <span data-bind="visible: selectedTrigger() && selectedTrigger().id === 4">
-                    <select data-bind="options: availableGoals, optionsText: 'description', value: selectedGoal, optionsCaption: 'Choose a Goal...'"></select>
+                <span class="input-wrapper">
+                    <input id="trigger-2-textfield" type="text" data-bind="currency: amount, value: amount, visible: selectedTrigger() && selectedTrigger().id !== 4" />
+                    <select id="trigger-2-select" class="dropdown-select" data-bind="options: availableGoals, optionsText: 'description', value: selectedGoal, optionsCaption: 'Choose a Goal...'"></select>
                 </span>
             </div>
             <div id="action-2" class="action-cell">
                 <span class="dropdown-label"></span>
+                <span class="input-wrapper">
+                    <select class="dropdown-select" data-bind="options: availableAccounts, value: selectedAccount"></select>
+                </span>
             </div>
         </div>
         <div class="creation-row">
             <div id="trigger-3" class="trigger-cell">
                 <span class="dropdown-label"></span>
-                <span><select data-bind="options: availableTimeFrames, optionsText: 'text', value: selectedTimeFrame, optionsCaption: 'Choose a Period...'"></select></span>
+                <span class="input-wrapper">
+                    <select data-bind="options: availableTimeFrames, optionsText: 'text', value: selectedTimeFrame, optionsCaption: 'Choose a Period...'"></select>
+                </span>
             </div>
             <div id="action-3" class="action-cell">
             </div>
@@ -53,37 +65,15 @@
         <div class="creation-row">
             <div id="trigger-4" class="trigger-cell">
                     <span class="dropdown-label"></span>
-                    <span><select data-bind="options: availableCategories, optionsText: 'text', value: selectedCategory, optionsCaption: 'Choose a Category...'"></select></span>
+                    <span class="input-wrapper">
+                        <select data-bind="options: availableCategories, optionsText: 'text', value: selectedCategory, optionsCaption: 'Choose a Category...'"></select>
+                    </span>
             </div>
             <div id="action-4" class="action-cell">
             </div>
         </div>
     </div>
-
-    <div data-bind="visible: selectedAction()" class="action-selected-info">
-        <table>
-            <tr data-bind="if: selectedAction() && selectedAction().id === 1">
-                <td><label>Your email, please?</label></td>
-                <td><input type="text" data-bind="value: email" /></td>
-            </tr>
-            <tr data-bind="if: selectedAction() && (selectedAction().id === 2 || selectedAction().id === 3)">
-                <td><label>Your phone, please?</label></td>
-                <td><input type="text" data-bind="value: email" /></td>
-            </tr>
-            <tr data-bind="if: selectedAction() && selectedAction().id === 5">
-                <td><label>How much?</label></td>
-                <td><input type="text" data-bind="value: targetAmount" placeholder="Amount or Percent" /></td>
-            </tr>
-            <tr data-bind="if: selectedAction() && selectedAction().id === 5">
-                <td><label>To which account?</label></td>
-                <td><span><select data-bind="options: availableAccounts, value: selectedAccount"></select></span></td>
-            </tr>
-        </table>
-    </div> <!--End Action-->
-
 </div>
-
-
 
 
 <br />
@@ -106,7 +96,6 @@
 }
 
 @section Styles{
-    @Styles.Render("~/Content/dropdown.css")
     @Styles.Render("~/Content/actionplan.css")
     @Styles.Render("~/Content/selectric.css")
 

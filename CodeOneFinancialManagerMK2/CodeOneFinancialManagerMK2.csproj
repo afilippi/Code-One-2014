@@ -251,7 +251,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\dashboard.css" />
-    <Content Include="Content\dropdown.css" />
     <None Include="Content\Sass\actionplan.scss" />
     <None Include="Content\Sass\selectric.scss" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -393,10 +392,7 @@
     <Content Include="Content\_colors.scss" />
     <Content Include="Content\_header.scss" />
     <Content Include="Content\_mixins.scss" />
-    <Content Include="Content\Sass\_about-light.scss" />
     <Content Include="Content\Sass\_reset.scss" />
-    <Content Include="Content\Sass\dropdown.scss" />
-    <Content Include="Content\Sass\_about-dark.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\highcharts.js" />
     <Content Include="Scripts\IFTT\dropdown.js" />

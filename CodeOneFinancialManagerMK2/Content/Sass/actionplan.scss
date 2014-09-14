@@ -12,6 +12,12 @@
 
 }
 
+.iftt-wrapper {
+    @include outer-container;
+    border-bottom: thin solid $light-gray;
+
+}
+
 .trigger-body {
     @include span-columns(6);
 
@@ -65,21 +71,56 @@
 
 .creation-row {
     @include outer-container;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .trigger-cell {
     @include span-columns(6);
-    @include outer-container;
     visibility: hidden;
+
+    .dropdown-label {
+        @include span-columns(3 of 6);
+        font-weight: bold;
+    }
+
+    .input-wrapper {
+        @include span-columns(3 of 6);
+        @include omega();
+    }
+
 }
 
 
 .action-cell {
     @include span-columns(6);
-    @include outer-container;
+    @include omega();
     visibility: hidden;
+
+    .dropdown-label {
+        @include span-columns(3 of 6);
+        font-weight: bold;
+    }
+
+    .input-wrapper {
+        @include span-columns(3 of 6);
+        @include omega();
+    }
 }
 
-span .dropdown-label {
-    font-weight: bold;
+
+#action-1-contactinfo {
+    display: none;
+}
+
+#action-1-amount {
+    display: none;
+}
+
+#trigger-2-textfield {
+    display: none;
+}
+
+#trigger-2-select {
+    display: none;
 }

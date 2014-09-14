@@ -112,6 +112,8 @@ var updateTriggerForSpending = function () {
     $('#trigger-2 .dropdown-label').text('Spends How Much?');
     $('#trigger-3 .dropdown-label').text('In What Time Period?');
     $('#trigger-4 .dropdown-label').text('What Category?');
+    $('#trigger-2-textfield').show();
+    $('#trigger-2 .selectricWrapper').hide();
     $('#trigger-1').visible();
     $('#trigger-2').visible();
     $('#trigger-3').visible();
@@ -121,6 +123,8 @@ var updateTriggerForSpending = function () {
 var updateTriggerForWithdraw = function () {
     $('#trigger-1 .dropdown-label').text('Who\'s Withdrawing?');
     $('#trigger-2 .dropdown-label').text('Withdrawl Amount');
+    $('#trigger-2-textfield').show();
+    $('#trigger-2 .selectricWrapper').hide();
     $('#trigger-1').visible();
     $('#trigger-2').visible();
     $('#trigger-3').invisible();
@@ -130,6 +134,8 @@ var updateTriggerForWithdraw = function () {
 var updateTriggerForDeposit = function () {
     $('#trigger-1 .dropdown-label').text('Who\'s Depositing?');
     $('#trigger-2 .dropdown-label').text('Amount of Deposit');
+    $('#trigger-2-textfield').show();
+    $('#trigger-2 .selectricWrapper').hide();
     $('#trigger-1').visible();
     $('#trigger-2').visible();
     $('#trigger-3').invisible();
@@ -139,6 +145,8 @@ var updateTriggerForDeposit = function () {
 var updateTriggerForGoal = function () {
     $('#trigger-1 .dropdown-label').text('Who\'s Goal?');
     $('#trigger-2 .dropdown-label').text('Which Goal?');
+    $('#trigger-2-textfield').hide();
+    $('#trigger-2 .selectricWrapper').show();
     $('#trigger-1').visible();
     $('#trigger-2').visible();
     $('#trigger-3').invisible();
@@ -154,6 +162,8 @@ var updateTriggerForEmpty = function () {
 
 var updateActionForEmail = function () {
     $('#action-1 .dropdown-label').text('Email Address');
+    $('#action-1-contactinfo').show();
+    $('#action-1-amount').hide();
     $('#action-2 .dropdown-label').text('N/A - Remove');
     $('#action-1').visible();
     $('#action-2').invisible();
@@ -161,12 +171,16 @@ var updateActionForEmail = function () {
 
 var updateActionForText = function () {
     $('#action-1 .dropdown-label').text('Phone Number');
+    $('#action-1-contactinfo').show();
+    $('#action-1-amount').hide();
     $('#action-1').visible();
     $('#action-2').invisible();
 };
 
 var updateActionForCall = function () {
     $('#action-1 .dropdown-label').text('Phone Number');
+    $('#action-1-contactinfo').show();
+    $('#action-1-amount').hide();
     $('#action-1').visible();
     $('#action-2').invisible();
 };
@@ -174,16 +188,22 @@ var updateActionForCall = function () {
 var updateActionForAlert = function () {
     $('#action-1').invisible();
     $('#action-2').invisible();
+    $('#action-1-contactinfo').hide();
+    $('#action-1-amount').hide();
 };
 
 var updateActionForTransfer = function () {
     $('#action-1 .dropdown-label').text('Transfer Amount');
     $('#action-2 .dropdown-label').text('Destination Account');
+    $('#action-1-contactinfo').hide();
+    $('#action-1-amount').show();
     $('#action-1').visible();
     $('#action-2').visible();
 };
 
 var updateActionForEmpty = function () {
+    $('#action-1-contactinfo').hide();
+    $('#action-1-amount').hide();
     $('#action-1').invisible();
     $('#action-2').invisible();
 };

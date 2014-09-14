@@ -220,6 +220,16 @@ input[type="submit"] {
     display: table;
     clear: both; }
 
+.iftt-wrapper {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: thin solid #DDD; }
+  .iftt-wrapper:after {
+    content: "";
+    display: table;
+    clear: both; }
+
 .trigger-body {
   float: left;
   display: block;
@@ -303,7 +313,9 @@ input[type="submit"] {
 .creation-row {
   max-width: 68em;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  margin-top: 1em;
+  margin-bottom: 1em; }
   .creation-row:after {
     content: "";
     display: table;
@@ -314,34 +326,62 @@ input[type="submit"] {
   display: block;
   margin-right: 2.35765%;
   width: 48.82117%;
-  max-width: 68em;
-  margin-left: auto;
-  margin-right: auto;
   visibility: hidden; }
   .trigger-cell:last-child {
     margin-right: 0; }
-  .trigger-cell:after {
-    content: "";
-    display: table;
-    clear: both; }
+  .trigger-cell .dropdown-label {
+    float: left;
+    display: block;
+    margin-right: 4.82916%;
+    width: 47.58542%;
+    font-weight: bold; }
+    .trigger-cell .dropdown-label:last-child {
+      margin-right: 0; }
+  .trigger-cell .input-wrapper {
+    float: left;
+    display: block;
+    margin-right: 4.82916%;
+    width: 47.58542%;
+    margin-right: 0; }
+    .trigger-cell .input-wrapper:last-child {
+      margin-right: 0; }
 
 .action-cell {
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 48.82117%;
-  max-width: 68em;
-  margin-left: auto;
-  margin-right: auto;
+  margin-right: 0;
   visibility: hidden; }
   .action-cell:last-child {
     margin-right: 0; }
-  .action-cell:after {
-    content: "";
-    display: table;
-    clear: both; }
+  .action-cell .dropdown-label {
+    float: left;
+    display: block;
+    margin-right: 4.82916%;
+    width: 47.58542%;
+    font-weight: bold; }
+    .action-cell .dropdown-label:last-child {
+      margin-right: 0; }
+  .action-cell .input-wrapper {
+    float: left;
+    display: block;
+    margin-right: 4.82916%;
+    width: 47.58542%;
+    margin-right: 0; }
+    .action-cell .input-wrapper:last-child {
+      margin-right: 0; }
 
-span .dropdown-label {
-  font-weight: bold; }
+#action-1-contactinfo {
+  display: none; }
+
+#action-1-amount {
+  display: none; }
+
+#trigger-2-textfield {
+  display: none; }
+
+#trigger-2-select {
+  display: none; }
 
 /*# sourceMappingURL=actionplan.css.map */
