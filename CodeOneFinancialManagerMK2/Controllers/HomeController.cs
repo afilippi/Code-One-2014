@@ -59,5 +59,10 @@ namespace CodeOneFinancialManagerMK2.Controllers
         {
             return View();
         }
+
+        public ActionResult Goals()
+        {
+            return View();
+        }
     }
 }
