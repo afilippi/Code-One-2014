@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeOneFinancialManagerMK2", "CodeOneFinancialManagerMK2\CodeOneFinancialManagerMK2.csproj", "{40E93902-7EA8-4DF3-8FEA-731F9AD455AD}"
 EndProject
