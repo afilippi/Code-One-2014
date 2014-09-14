@@ -49,7 +49,7 @@ header.navigation {
   .nav {
     z-index: 9999999;
     float: none;
-    /*margin-left: 16em;*/
+    margin-left: 28em;
     @include media ($horizontal-bar-mode) {
       float: left;
     }
