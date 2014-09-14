@@ -250,9 +250,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\logo.png" />
     <Content Include="images\select-arrow-close.png" />
     <Content Include="images\select-arrow-open.png" />
+    <Content Include="Scripts\ammap.js" />
     <Content Include="Scripts\Analysis\BarChart.js" />
+    <Content Include="Scripts\Analysis\MapChart.js" />
     <Content Include="Scripts\Analysis\PieChart.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -398,6 +401,7 @@
     <Content Include="Scripts\navigation.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\usaLow.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Home\Speech.xml">
       <SubType>Designer</SubType>

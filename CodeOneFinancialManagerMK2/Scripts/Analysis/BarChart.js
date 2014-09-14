@@ -4,6 +4,7 @@
             chart: {
                 renderTo: 'container',
                 type: 'column',
+                backgroundColor: null
             },
             title: {
                 text: 'Your Spending History',
@@ -33,7 +34,8 @@
                         [0, '#4AAA42'],
                         [1, '#0D723C']
                     ]
-                }
+                },
+                borderWidth: 0
             },
                     {
                         name: 'Goal',
