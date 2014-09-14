@@ -10,6 +10,8 @@
     <script src="~/Scripts/ammap.js" type="text/javascript"></script>
     <script src="~/Scripts/usaLow.js" type="text/javascript"></script>
     <script src="~/Scripts/Analysis/MapChart.js" type="text/javascript"></script>
+    @Scripts.Render("~/Scripts/Analysis/viewModel.js")
+    @Styles.Render("~/Content/dropdown.css")
 }
 
 <style>
@@ -24,7 +26,14 @@
             <div>
                 <div id="balanceContainer" style="min-width: 300px; height: 310px; margin: 0 auto; cursor: pointer;">
                     <h2>Hi Jake,</h2>
-                    <h4>Your account balance is <span style="color:#4AAA42;">$3,441.07</span></h4>
+                    <div style="margin-top: 10px;">
+                    <h4 style="display: inline; vertical-align: bottom;">Your </h4><span class="custom-dropdown custom-dropdown--white">
+    <select style="color: #0D723C; font-size: 1.3em; padding-top: .1em; padding-bottom: .1em; padding-right: 1.5em; font-weight: bold; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;" class="custom-dropdown__select custom-dropdown__select--white" data-bind="options: availableAccounts, optionsText: 'accountName', value: selectedAccount"></select>
+</span>
+                        </div>
+                    <h4>account balance is <span style="color:#4AAA42;">$3,441.07</span></h4>
+
+
                 </div>
             </div>
         </td>
