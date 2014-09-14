@@ -6,10 +6,8 @@ var availableAccounts = [
 ];
 
 var AnalysisViewModel = {
-    availableAccounts: availableAccounts,
-    selectedAccount: ko.observable(availableAccounts[0])
-
-    
+    availableAccount: availableAccounts,
+    selectedAccount: ko.observable(this.availableAccounts[0])
 };
 
 AnalysisViewModel.selectedAccount.subscribe(function (newValue) {
@@ -158,4 +156,7 @@ AnalysisViewModel.selectedAccount.subscribe(function (newValue) {
         $('#chartdiv > div > div:nth-child(1) > svg > g:nth-child(16)').remove();
     }
 });
-ko.applyBindings(AnalysisViewModel, $(".body-container")[0]);
+
+$(document).ready(function () {
+    ko.applyBindings(AnalysisViewModel, $(".body-container")[0]);
+});

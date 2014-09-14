@@ -101,7 +101,12 @@
 
 });
 
-map.addTitle("Spending by State", 14);
+//map.addTitle("Spending by State", 18, '#000000' , 1,false);
+//map.titles = {
+//    'text': 'Spending by State',
+//    'size': '18px',
+//};
+map.fontFamily = "'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, sans - serif";
 map.areasSettings = {
     alpha: 1,
     color: "#afdeab",

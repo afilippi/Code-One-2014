@@ -147,4 +147,8 @@ function AddAlerts(result) {
 
 
 
-ko.applyBindings(AlertViewModel, document.getElementById("alertWrapper"));
+//ko.applyBindings(AlertViewModel, document.getElementById("alertWrapper"));
+//      ko.applyBindingsToNode(document.getElementById('alertWrapper'), AlertViewModel);
+        $(document).ready(function () {
+            ko.applyBindings(AlertViewModel, $("#alertWrapper")[0]);
+        });
