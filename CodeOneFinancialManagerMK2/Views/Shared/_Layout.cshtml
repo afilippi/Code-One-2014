@@ -25,14 +25,12 @@
             <div class="nav">
                 <ul id="navigation-menu">
                     <li class="nav-link">@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li class="nav-link">@Html.ActionLink("About", "About", "Home")</li>
-                    <li class="nav-link">@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li class="nav-link">@Html.ActionLink("Dashboard", "Dashboard", "Home")</li>
                     <li class="nav-link">@Html.ActionLink("Analysis", "Analysis", "Home")</li>
-                    <li class="nav-link">@Html.ActionLink("If This...Then That", "IFTT", "Home")</li>
+                    <li class="nav-link">@Html.ActionLink("Actions", "IFTT", "Home")</li>
+                    @Html.Partial("_LoginPartial")
                 </ul>
             </div>
-            @Html.Partial("_LoginPartial")
         </div>
     </header>
 
