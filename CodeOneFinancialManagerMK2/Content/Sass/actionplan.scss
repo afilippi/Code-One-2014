@@ -15,21 +15,35 @@
 .trigger-body {
     @include span-columns(6);
 
+    .header-wrapper {
+        @include span-columns(1 of 6);
+    }
+
+    .select-wrapper {
+        @include span-columns(5 of 6);
+        @include omega();
+    }
 }
 
 .action-body {
     @include span-columns(6);
     @include omega();
+
+    .header-wrapper {
+        @include span-columns(2 of 6);
+    }
+
+    .select-wrapper {
+        @include span-columns(4 of 6);
+    }
 }
+
 
 .item-callout {
     display: inline;
     vertical-align: bottom;
 }
 
-.dropdown-container {
-    margin-left: 0.5em;
-}
 
 .item-dropdown {
     position: relative; 
@@ -43,7 +57,6 @@
 
 .action-selected-info {
     @include span-columns(6);
-    @include omega();
 }
 
 .actionplan-creation-body {
@@ -57,18 +70,16 @@
 .trigger-cell {
     @include span-columns(6);
     @include outer-container;
+    visibility: hidden;
+}
+
+
+.action-cell {
+    @include span-columns(6);
+    @include outer-container;
+    visibility: hidden;
 }
 
 span .dropdown-label {
     font-weight: bold;
-}
-
-.action-cell {
-    @include span-columns(6);
-    @include omega();
-    @include outer-container;
-}
-
-.cell-content {
-    display: none;
 }

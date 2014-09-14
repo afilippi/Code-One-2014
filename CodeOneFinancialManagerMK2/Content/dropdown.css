@@ -1,96 +1,59 @@
-﻿.currencyinput {
-    border: 1px inset #ccc;
-}
-.currencyinput input {
-    border: 0;
-}
+/*
+Error: File to import not found or unreadable: about-dark.
+       Load path: C:/Users/David/Documents/src/Code-One-2014/CodeOneFinancialManagerMK2/Content/Sass
+        on line 3 of Content/Sass/dropdown.scss
 
+1: @import 'mixins',
+2:         'reset',
+3:         'about-dark',
+4:         'about-light';
+5: 
+6: /*
+7:  * Copyright (c) 2012-2013 Thibaut Courouble
+8:  * http://www.cssflow.com
 
-
-.custom-dropdown--large {
-    font-size: 1.5em;
-}
-
-.custom-dropdown--small {
-    font-size: .7em;
-}
-
-.custom-dropdown__select{
-    font-size: inherit; /* inherit size from .custom-dropdown */
-    padding: .5em; /* add some space*/
-    margin: 0; /* remove default margins */
-}
-
-.custom-dropdown__select--white {
-    background-color: #fff;
-    color: #444;    
-}
-
-@supports (pointer-events: none) and
-      ((-webkit-appearance: none) or
-      (-moz-appearance: none) or
-      (appearance: none)) {
-
-    .custom-dropdown {
-        position: relative;
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    .custom-dropdown__select {
-        padding-right: 2.5em; /* accommodate with the pseudo elements for the dropdown arrow */
-        border: 0;
-        border-radius: 3px;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;    
-    }
-
-    .custom-dropdown::before,
-    .custom-dropdown::after {
-        content: "";
-        position: absolute;
-        pointer-events: none;
-    }
-
-    .custom-dropdown::after { /*  Custom dropdown arrow */
-        content: "\25BC";
-        height: 1em;
-        font-size: .625em;
-        line-height: 1;
-        right: 1.2em;
-        top: 50%; margin-top: -.5em;
-    }
-
-    .custom-dropdown::before { /*  Custom dropdown arrow cover */
-        width: 2em;
-        right: 0; top: 0; bottom: 0;
-        border-radius: 0 3px 3px 0;
-    }
-
-    .custom-dropdown__select[disabled] {
-        color: rgba(0,0,0,.3);
-    }
-
-    .custom-dropdown.custom-dropdown--disabled::after {
-        color: rgba(0,0,0,.1);
-    }
-
-    /* White dropdown style */
-    .custom-dropdown--white::before {
-        top: .5em; bottom: .5em;
-        background-color: #fff;
-        border-left: 1px solid rgba(0,0,0,.1);
-    }
-
-    .custom-dropdown--white::after {
-        color: rgba(0,0,0,.9);
-    }
-
-    /* FF only temp fix */
-    @-moz-document url-prefix() {
-        .custom-dropdown__select             { padding-right: .9em }
-        .custom-dropdown--large .custom-dropdown__select { padding-right: 1.3em }
-        .custom-dropdown--small .custom-dropdown__select { padding-right: .5em }
-    }
-}
+Backtrace:
+Content/Sass/dropdown.scss:3
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/import_node.rb:66:in `rescue in import'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/import_node.rb:45:in `import'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/import_node.rb:28:in `imported_file'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/import_node.rb:37:in `css_import?'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:301:in `visit_import'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/stack.rb:79:in `block in with_base'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/stack.rb:115:in `with_frame'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/stack.rb:79:in `with_base'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/visitors/base.rb:52:in `map'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:157:in `visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/visitors/perform.rb:8:in `visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/root_node.rb:36:in `css_tree'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/engine.rb:368:in `_render_with_sourcemap'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/engine.rb:285:in `render_with_sourcemap'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/plugin/compiler.rb:489:in `update_stylesheet'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/plugin/compiler.rb:209:in `each'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/plugin/compiler.rb:469:in `on_file_changed'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/lib/sass/plugin/compiler.rb:328:in `block in watch'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/vendor/listen/lib/listen/listener.rb:252:in `call'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/vendor/listen/lib/listen/listener.rb:252:in `on_change'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/vendor/listen/lib/listen/adapters/polling.rb:48:in `call'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/vendor/listen/lib/listen/adapters/polling.rb:48:in `poll_changed_directories'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.4/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: File to import not found or unreadable: about-dark.\A        Load path: C:/Users/David/Documents/src/Code-One-2014/CodeOneFinancialManagerMK2/Content/Sass\A         on line 3 of Content/Sass/dropdown.scss\A \A 1: @import 'mixins',\A 2:         'reset',\A 3:         'about-dark',\A 4:         'about-light';\A 5: \A 6: /*\A 7:  * Copyright (c) 2012-2013 Thibaut Courouble\A 8:  * http://www.cssflow.com"; }

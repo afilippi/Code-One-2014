@@ -2,43 +2,41 @@
 <hr />
 <div class="actionplan-body">
     <div class="trigger-body">
-        <h2 class="item-callout">If</h2>
-        <span class="custom-dropdown custom-dropdown--white dropdown-container" >
-            <select class="custom-dropdown__select custom-dropdown__select--white item-dropdown" data-bind="options: availableTriggers, optionsText: 'displayText', value: selectedTrigger, optionsCaption: 'Choose a Trigger...'"></select>
-        </span>
+        <div class="header-wrapper">
+            <h2 class="item-callout">If</h2>
+        </div>
+        <div class="select-wrapper">
+            <select class="dropdown-select" data-bind="options: availableTriggers, optionsText: 'displayText', value: selectedTrigger, optionsCaption: 'Choose a Trigger...'"></select>
+        </div>
     </div>
     <div class="action-body">
-        <h2 class="item-callout">&hellip;Then</h2>
-        <span class="custom-dropdown custom-dropdown--white dropdown-container">
-            <select class="custom-dropdown__select custom-dropdown__select--white item-dropdown" data-bind="options: availableActions, optionsText: 'displayText', value: selectedAction, optionsCaption: 'Choose an Action...'"></select>
-        </span>
+        <div class="header-wrapper">
+            <h2 class="item-callout">&hellip;Then</h2>
+        </div>
+        <div class="select-wrapper">
+            <select data-bind="options: availableActions, optionsText: 'displayText', value: selectedAction, optionsCaption: 'Choose an Action...'"></select>
+        </div>
     </div>
 
     <div class="actionplan-creation-body">
 
         <div class="creation-row">
             <div id="trigger-1" class="trigger-cell">
-                <div class="cell-content">
-                    <span class="dropdown-label"></span>
-                    <span class="custom-dropdown custom-dropdown--white"><select class="custom-dropdown__select custom-dropdown__select--white" data-bind="options: availableUsers, optionsText: 'fullName', value: selectedUser, optionsCaption: 'Choose a User...'"></select></span>
-                </div>
+                <span class="dropdown-label"></span>
+                <span><select data-bind="options: availableUsers, optionsText: 'fullName', value: selectedUser, optionsCaption: 'Choose a User...'"></select></span>
             </div>
             <div id="action-1" class="action-cell">
-                <div class="cell-content">
-                    <span class="dropdown-label"></span>
-                </div>
+                <span class="dropdown-label"></span>
             </div>
         </div>
         <div class="creation-row">
             <div id="trigger-2" class="trigger-cell">
-                <div class="cell-content">
-                    <span class="dropdown-label"></span>
-                    <input type="text" data-bind="currency: amount, value: amount, visible: selectedTrigger() && selectedTrigger().id !== 4" />
+                <span class="dropdown-label"></span>
+                <input type="text" data-bind="currency: amount, value: amount, visible: selectedTrigger() && selectedTrigger().id !== 4" />
 
-                    <span data-bind="visible: selectedTrigger() && selectedTrigger().id === 4" class="custom-dropdown custom-dropdown--white">
-                        <select class="custom-dropdown__select custom-dropdown__select--white" data-bind="options: availableGoals, optionsText: 'description', value: selectedGoal, optionsCaption: 'Choose a Goal...'"></select>
-                    </span>
-                </div>
+                <span data-bind="visible: selectedTrigger() && selectedTrigger().id === 4">
+                    <select data-bind="options: availableGoals, optionsText: 'description', value: selectedGoal, optionsCaption: 'Choose a Goal...'"></select>
+                </span>
             </div>
             <div id="action-2" class="action-cell">
                 <span class="dropdown-label"></span>
@@ -46,75 +44,21 @@
         </div>
         <div class="creation-row">
             <div id="trigger-3" class="trigger-cell">
-                <div class="cell-content">
-                    <span class="dropdown-label"></span>
-                    <span class="custom-dropdown custom-dropdown--white"><select class="custom-dropdown__select custom-dropdown__select--white" data-bind="options: availableTimeFrames, optionsText: 'text', value: selectedTimeFrame, optionsCaption: 'Choose a Period...'"></select></span>
-                </div>
+                <span class="dropdown-label"></span>
+                <span><select data-bind="options: availableTimeFrames, optionsText: 'text', value: selectedTimeFrame, optionsCaption: 'Choose a Period...'"></select></span>
             </div>
             <div id="action-3" class="action-cell">
-                <span class="dropdown-label"></span>
             </div>
         </div>
         <div class="creation-row">
             <div id="trigger-4" class="trigger-cell">
-                <div class="cell-content">
                     <span class="dropdown-label"></span>
-                    <span class="custom-dropdown custom-dropdown--white"><select class="custom-dropdown__select custom-dropdown__select--white" data-bind="options: availableCategories, optionsText: 'text', value: selectedCategory, optionsCaption: 'Choose a Category...'"></select></span>
-                </div>
+                    <span><select data-bind="options: availableCategories, optionsText: 'text', value: selectedCategory, optionsCaption: 'Choose a Category...'"></select></span>
             </div>
             <div id="action-4" class="action-cell">
-                <span class="dropdown-label"></span>
             </div>
         </div>
     </div>
-    <!--
-    <div class="trigger-selected-info" data-bind="visible: IFTTViewModel.selectedTrigger()">
-        <table>
-            <tr>
-                <td>
-                    <label data-bind="visible: IFTTViewModel.selectedTrigger() && IFTTViewModel.selectedTrigger().id === 1">Who's spending?</label>
-                    <label data-bind="visible: IFTTViewModel.selectedTrigger() && IFTTViewModel.selectedTrigger().id === 2">Who's withdrawing?</label>
-                    <label data-bind="visible: IFTTViewModel.selectedTrigger() && IFTTViewModel.selectedTrigger().id === 3">Who's depositing?</label>
-                    <label data-bind="visible: IFTTViewModel.selectedTrigger() && IFTTViewModel.selectedTrigger().id === 4">Who's goal?</label>
-                </td>
-                <td style="text-align: right;">
-                    <span class="custom-dropdown custom-dropdown--white"><select class="custom-dropdown__select custom-dropdown__select--white" data-bind="options: availableUsers, optionsText: 'fullName', value: selectedUser, optionsCaption: 'Choose a User...'"></select></span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label data-bind="visible: IFTTViewModel.selectedTrigger() && IFTTViewModel.selectedTrigger().id === 1">Spends how much?</label>
-                    <label data-bind="visible: IFTTViewModel.selectedTrigger() && IFTTViewModel.selectedTrigger().id === 2">Withdraws how much?</label>
-                    <label data-bind="visible: IFTTViewModel.selectedTrigger() && IFTTViewModel.selectedTrigger().id === 3">Deposits how much?</label>
-                    <label data-bind="visible: IFTTViewModel.selectedTrigger() && IFTTViewModel.selectedTrigger().id === 4">Meets which goal?</label>
-                </td>
-                <td style="text-align: right;">
-                    <input type="text" data-bind="currency: amount, value: amount, visible: selectedTrigger() && selectedTrigger().id !== 4" />
-
-                    <span data-bind="visible: selectedTrigger() && selectedTrigger().id === 4" class="custom-dropdown custom-dropdown--white">
-                        <select class="custom-dropdown__select custom-dropdown__select--white" data-bind="options: availableGoals, optionsText: 'description', value: selectedGoal, optionsCaption: 'Choose a Goal...'"></select>
-                    </span>
-                </td>
-            </tr>
-            <tr data-bind="if: selectedTrigger() && selectedTrigger().id === 1">
-                <td>
-                    <label>In what time period?</label>
-                </td>
-                <td style="text-align: right;">
-                    <span class="custom-dropdown custom-dropdown--white"><select class="custom-dropdown__select custom-dropdown__select--white" data-bind="options: availableTimeFrames, optionsText: 'text', value: selectedTimeFrame, optionsCaption: 'Choose a Period...'"></select></span>
-                </td>
-            </tr>
-            <tr data-bind="if: selectedTrigger() && selectedTrigger().id === 1">
-                <td>
-                    <label>Where?</label>
-                </td>
-                <td style="text-align: right;">
-                    <span class="custom-dropdown custom-dropdown--white"><select class="custom-dropdown__select custom-dropdown__select--white" data-bind="options: availableCategories, optionsText: 'text', value: selectedCategory, optionsCaption: 'Choose a Category...'"></select></span>
-                </td>
-            </tr>
-        </table>
-    </div>--> <!-- End Trigger-->
-
 
     <div data-bind="visible: selectedAction()" class="action-selected-info">
         <table>
@@ -132,7 +76,7 @@
             </tr>
             <tr data-bind="if: selectedAction() && selectedAction().id === 5">
                 <td><label>To which account?</label></td>
-                <td><span class="custom-dropdown custom-dropdown--white"><select class="custom-dropdown__select custom-dropdown__select--white" data-bind="options: availableAccounts, value: selectedAccount"></select></span></td>
+                <td><span><select data-bind="options: availableAccounts, value: selectedAccount"></select></span></td>
             </tr>
         </table>
     </div> <!--End Action-->
@@ -157,10 +101,13 @@
 
 @section Scripts {
     @Scripts.Render("~/Scripts/IFTT/viewModel.js")
+    @Scripts.Render("~/Scripts/jquery.selectric.js")
+    @Scripts.Render("~/Scripts/IFTT/iftt-view.js")
 }
 
 @section Styles{
     @Styles.Render("~/Content/dropdown.css")
     @Styles.Render("~/Content/actionplan.css")
+    @Styles.Render("~/Content/selectric.css")
 
 }

@@ -227,6 +227,21 @@ input[type="submit"] {
   width: 48.82117%; }
   .trigger-body:last-child {
     margin-right: 0; }
+  .trigger-body .header-wrapper {
+    float: left;
+    display: block;
+    margin-right: 4.82916%;
+    width: 12.64237%; }
+    .trigger-body .header-wrapper:last-child {
+      margin-right: 0; }
+  .trigger-body .select-wrapper {
+    float: left;
+    display: block;
+    margin-right: 4.82916%;
+    width: 82.52847%;
+    margin-right: 0; }
+    .trigger-body .select-wrapper:last-child {
+      margin-right: 0; }
 
 .action-body {
   float: left;
@@ -236,13 +251,24 @@ input[type="submit"] {
   margin-right: 0; }
   .action-body:last-child {
     margin-right: 0; }
+  .action-body .header-wrapper {
+    float: left;
+    display: block;
+    margin-right: 4.82916%;
+    width: 30.11389%; }
+    .action-body .header-wrapper:last-child {
+      margin-right: 0; }
+  .action-body .select-wrapper {
+    float: left;
+    display: block;
+    margin-right: 4.82916%;
+    width: 65.05695%; }
+    .action-body .select-wrapper:last-child {
+      margin-right: 0; }
 
 .item-callout {
   display: inline;
   vertical-align: bottom; }
-
-.dropdown-container {
-  margin-left: 0.5em; }
 
 .item-dropdown {
   position: relative;
@@ -261,8 +287,7 @@ input[type="submit"] {
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 48.82117%;
-  margin-right: 0; }
+  width: 48.82117%; }
   .action-selected-info:last-child {
     margin-right: 0; }
 
@@ -291,7 +316,8 @@ input[type="submit"] {
   width: 48.82117%;
   max-width: 68em;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  visibility: hidden; }
   .trigger-cell:last-child {
     margin-right: 0; }
   .trigger-cell:after {
@@ -299,18 +325,15 @@ input[type="submit"] {
     display: table;
     clear: both; }
 
-span .dropdown-label {
-  font-weight: bold; }
-
 .action-cell {
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 48.82117%;
-  margin-right: 0;
   max-width: 68em;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  visibility: hidden; }
   .action-cell:last-child {
     margin-right: 0; }
   .action-cell:after {
@@ -318,7 +341,7 @@ span .dropdown-label {
     display: table;
     clear: both; }
 
-.cell-content {
-  display: none; }
+span .dropdown-label {
+  font-weight: bold; }
 
 /*# sourceMappingURL=actionplan.css.map */
