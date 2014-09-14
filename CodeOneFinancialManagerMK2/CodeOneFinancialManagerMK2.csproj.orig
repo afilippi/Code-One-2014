@@ -261,7 +261,6 @@
     <Content Include="images\select-arrow-open.png" />
     <Content Include="Scripts\ammap.js" />
     <Content Include="Scripts\Analysis\BarChart.js" />
-    <Content Include="Scripts\Analysis\LineChart.js" />
     <Content Include="Scripts\Analysis\MapChart.js" />
     <Content Include="Scripts\Analysis\PieChart.js" />
     <Content Include="Scripts\Analysis\viewModel.js" />
@@ -409,7 +408,11 @@
     <Content Include="Scripts\navigation.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+<<<<<<< HEAD
+    <Content Include="Scripts\Util\Util.js" />
+=======
     <Content Include="Scripts\usaLow.js" />
+>>>>>>> b0ffd133469dee3c888fcf354bf723441110e0fe
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Home\Speech.xml">
       <SubType>Designer</SubType>

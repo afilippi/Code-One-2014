@@ -82,49 +82,48 @@ namespace CodeOneFinancialManagerMK2.Controllers
 
         public class EventAlert
         {
-            public int id;
-            public int AccountID;
-            public String ActionID;
-            public float CurrentAmount;
-            public float TriggerAmount;
-            public String MCC;
-            public String TimeFrame;
-            public DateTime DateOccured;
-            public String Trigger;
+            public int Id { get; set; }
+            public string Descrption { get; set; }
+            public DateTime Date { get; set; }
+            public int AccountID { get; set; }
         }
 
+        [Serializable]
         public class GetAlertRequest
         {
-           public int AccountID;        
+            public int AccountID { get; set; }       
         }
 
+        [Serializable]
         public class GetAlertResponse
         {
             public EventAlert[] Alerts;
         }
 
 
-        public GetAlertResponse GetAlerts(GetAlertRequest request)
+
+        [HttpPost]
+        public ActionResult GetAlerts(GetAlertRequest request)
         {
             GetAlertResponse response = new GetAlertResponse();
             using (BenderEntities context = new BenderEntities())
             {
                 int alert = context.Actions.Where(x => x.Type.Equals("Alert")).FirstOrDefault().Id;
-                response.Alerts = context.IFTTs.Where(x => x.TriggerAmount <= x.CurrentAmount && x.ActionID == alert).Select(y => new EventAlert()
+                response.Alerts = context.Alerts.Where(x => x.AccountID == request.AccountID).Select(y => new EventAlert()
                 {
-                   id = y.Id,
-                   AccountID = y.AccountID ?? 0,
-                   ActionID = context.Actions.Where(z => z.Id == y.ActionID).FirstOrDefault().Type,
-                   CurrentAmount = (float)y.CurrentAmount,
-                   TriggerAmount = (float)y.TriggerAmount,
-                   MCC = context.MCCs.Where(z => z.Id == y.MCC).FirstOrDefault().Type,
-                   TimeFrame = context.TimeFrames.Where(z => z.Id == y.TimeFrameID).FirstOrDefault().Type,
-                   DateOccured = y.StartDate ?? DateTime.Now,
-                   Trigger = context.Triggers.Where(z => z.Id == y.TriggerID).FirstOrDefault().Type,        
+                   Id = y.Id,
+                   Descrption = y.Descrption,
+                   Date = y.Date ??  DateTime.Now,
+                   AccountID = y.AccountID ?? 1,
+                  
                 }).ToArray();
             }
-            return response;
+            return Json(response, JsonRequestBehavior.AllowGet);
         }
+
+
+        
+     
 
 
 

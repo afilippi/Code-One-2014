@@ -254,6 +254,7 @@
           <Property Name="Carrier" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
+<<<<<<< HEAD
         <EntityType Name="Alert">
           <Key>
             <PropertyRef Name="Id" />
@@ -263,7 +264,10 @@
           <Property Name="Date" Type="DateTime" Precision="3" />
           <Property Name="AccountID" Type="Int32" />
         </EntityType>
+      </Schema>
+=======
         </Schema>
+>>>>>>> b0ffd133469dee3c888fcf354bf723441110e0fe
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

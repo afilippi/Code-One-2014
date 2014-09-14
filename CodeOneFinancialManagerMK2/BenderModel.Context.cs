@@ -36,5 +36,6 @@ namespace CodeOneFinancialManagerMK2
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<Trigger> Triggers { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Alert> Alerts { get; set; }
     }
 }
