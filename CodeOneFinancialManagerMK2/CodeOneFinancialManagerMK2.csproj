@@ -250,9 +250,10 @@
     <Content Include="Content\actionplan.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\dashboard.css" />
     <None Include="Content\Sass\actionplan.scss" />
     <None Include="Content\Sass\selectric.scss" />
+    <None Include="Content\Sass\analysis.scss" />
+    <None Include="Content\Sass\index-dashboard.scss" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -388,7 +389,6 @@
     <Content Include="Content\Sass\neat\settings\_visual-grid.scss" />
     <Content Include="Content\Sass\neat\_neat-helpers.scss" />
     <Content Include="Content\Sass\neat\_neat.scss" />
-    <Content Include="Content\starter-template.scss" />
     <Content Include="Content\_colors.scss" />
     <Content Include="Content\_header.scss" />
     <Content Include="Content\_mixins.scss" />
@@ -412,6 +412,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\usaLow.js" />
+    <Content Include="Scripts\Util\Util.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Home\Speech.xml">
       <SubType>Designer</SubType>
