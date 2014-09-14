@@ -258,6 +258,7 @@
     <Content Include="images\select-arrow-open.png" />
     <Content Include="Scripts\ammap.js" />
     <Content Include="Scripts\Analysis\BarChart.js" />
+    <Content Include="Scripts\Analysis\LineChart.js" />
     <Content Include="Scripts\Analysis\MapChart.js" />
     <Content Include="Scripts\Analysis\PieChart.js" />
     <Content Include="Scripts\Analysis\viewModel.js" />
