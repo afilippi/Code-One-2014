@@ -254,6 +254,9 @@
     <Content Include="Content\dashboard.css" />
     <Content Include="Content\dropdown.css" />
     <None Include="Content\Sass\actionplan.scss" />
+    <None Include="Content\Sass\selectric.scss" />
+    <None Include="Content\Sass\analysis.scss" />
+    <None Include="Content\Sass\index-dashboard.scss" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -391,18 +394,20 @@
     <Content Include="Content\Sass\neat\settings\_visual-grid.scss" />
     <Content Include="Content\Sass\neat\_neat-helpers.scss" />
     <Content Include="Content\Sass\neat\_neat.scss" />
-    <Content Include="Content\starter-template.scss" />
     <Content Include="Content\_colors.scss" />
     <Content Include="Content\_header.scss" />
     <Content Include="Content\_mixins.scss" />
+    <Content Include="Content\Sass\_reset.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\highcharts.js" />
     <Content Include="Scripts\IFTT\dropdown.js" />
+    <Content Include="Scripts\IFTT\iftt-view.js" />
     <Content Include="Scripts\IFTT\viewModel.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.circliful.min.js" />
+    <Content Include="Scripts\jquery.selectric.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -414,6 +419,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\usaLow.js" />
+    <Content Include="Scripts\Util\Util.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Home\Speech.xml">
       <SubType>Designer</SubType>
