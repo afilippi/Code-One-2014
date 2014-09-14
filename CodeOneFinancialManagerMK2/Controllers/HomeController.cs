@@ -26,7 +26,7 @@ namespace CodeOneFinancialManagerMK2.Controllers
 
                 ViewBag.Message = message;
             }
-            
+
             //ViewBag.Message = "Your application description page.";
 
             return View();
@@ -64,19 +64,20 @@ namespace CodeOneFinancialManagerMK2.Controllers
         public ActionResult Test()
         {
 
-     
+
 
             return View();
         }
 
         public void Hit()
-    {
-        var hubContext = GlobalHost.ConnectionManager.GetHubContext<AlertHub>();
-        hubContext.Clients.All.addNewMessageToPage("9/19", "Something Something");
-    }
-    
-    public ActionResult Goals()
-    {
-    	return View();
+        {
+            var hubContext = GlobalHost.ConnectionManager.GetHubContext<AlertHub>();
+            hubContext.Clients.All.addNewMessageToPage("9/19", "Something Something");
+        }
+
+        public ActionResult Goals()
+        {
+            return View();
+        }
     }
 }

@@ -235,6 +235,7 @@
     <Compile Include="Goal.cs">
       <DependentUpon>BenderModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Hub\AlertHub.cs" />
     <Compile Include="IFTT.cs">
       <DependentUpon>BenderModel.tt</DependentUpon>
     </Compile>
