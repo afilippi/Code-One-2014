@@ -265,8 +265,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\circliful.css" />
     <Content Include="Content\dashboard.css" />
+    <Content Include="Content\datepicker.css" />
     <Content Include="Content\dropdown.css" />
     <None Include="Content\Sass\actionplan.scss" />
+    <Content Include="Content\modal.css" />
+    <Content Include="Content\Sass\modal.scss" />
     <None Include="Content\Sass\selectric.scss" />
     <None Include="Content\Sass\analysis.scss" />
     <None Include="Content\Sass\index-dashboard.scss" />
@@ -283,6 +286,7 @@
     <Content Include="Scripts\Analysis\MapChart.js" />
     <Content Include="Scripts\Analysis\PieChart.js" />
     <Content Include="Scripts\Analysis\viewModel.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="BenderModel.edmx">
@@ -412,6 +416,7 @@
     <Content Include="Content\_mixins.scss" />
     <Content Include="Content\Sass\_reset.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Goals\viewModel.js" />
     <Content Include="Scripts\highcharts.js" />
     <Content Include="Scripts\IFTT\dropdown.js" />
     <Content Include="Scripts\IFTT\iftt-view.js" />

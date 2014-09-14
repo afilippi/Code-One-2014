@@ -4,15 +4,42 @@
 }
 
 <h2>Goals</h2>
+<h4>You are on-track to achive the <span style="color: #4AAA42;">Disneyland</span> goal on September 30, 2014</h4>
 <hr />
 <div style="display: inline-block;" id="disneyGoal" data-dimension="250" data-text="85%" data-info="Disneyland" data-width="30" data-fontsize="38" data-percent="4" data-fgcolor="#0D723C" data-bgcolor="#BDCFD1" data-fill="transparent" data-total="4000" data-part="3400" data-icon="long-arrow-up" data-icon-size="28" data-icon-color="#fff"></div>
 <div style="display: inline-block;" id="xboxGoal" data-dimension="250" data-text="28%" data-info="Xbox One" data-width="30" data-fontsize="38" data-percent="4" data-fgcolor="#0D723C" data-bgcolor="#BDCFD1" data-fill="transparent" data-total="500" data-part="140" data-icon="long-arrow-up" data-icon-size="28" data-icon-color="#fff"></div>
 <div style="display: inline-block;" id="hondaGoal" data-dimension="250" data-text="22%" data-info="Honda Accord" data-width="30" data-fontsize="38" data-percent="35" data-fgcolor="#0D723C" data-bgcolor="#BDCFD1" data-fill="transparent" data-total="26000" data-part="5600" data-icon="long-arrow-up" data-icon-size="28" data-icon-color="#fff"></div>
 
-<div class="round-button"><div class="round-button-circle"><a href="http://example.com" class="round-button">Button!!</a></div></div>
+<div data-bind="click: newGoalClicked" style="cursor: pointer; height: 220px; margin-left: 15px; width: 220px; border-radius: 110px; border: 10px #ec6b2f solid;"><div style="text-align: center; position: relative; top: 35%;"><i style="font-size: 30pt;" class="fa fa-plus"></i><h4>New Goal</h4></div></div>
+
+<div class="modal">
+    <input class="modal-state" id="modal-1" type="checkbox" />
+    <div class="modal-window" style="z-index: 9999;">
+        <div class="modal-inner">
+            <label class="modal-close" for="modal-1" style="left: auto;"></label>
+            <div class="block">
+                <label style="display: inline-block; float: left; padding-top: 5px; text-align: right; width: 250px;">What are you saving for?</label>
+                <input style="width: auto; margin-top:5px; margin-bottom: 5px; display: inline-block; vertical-align: middle; margin-left: 20px;" data-bind="value: goalDescription" type="text" />
+            </div>
+            <div class="block">
+                <label style="display: inline-block; float: left; padding-top: 5px; text-align: right; width: 250px;">Amount</label>
+                <input style="width: auto; margin-top:5px; margin-bottom: 5px; display: inline-block; vertical-align: middle; margin-left: 20px;" data-bind="value: goalAmount" type="text" />
+            </div>
+            <div class="block">
+                <label style="display: inline-block; float: left; padding-top: 5px; text-align: right; width: 250px;">Target Date</label>
+                <input id="datepicker" style="width: auto; margin-top:5px; margin-bottom: 5px; display: inline-block; vertical-align: middle; margin-left: 20px;" type="text" data-date-format="mm/dd/yy" />
+            </div>
+            <button data-bind="click: addGoal" style="background-color: #ec6b2f; float: right;">Add to Goals</button>
+        </div>
+    </div>
+</div>
+
+
 @section Scripts {
     @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
     @Scripts.Render("~/Scripts/jquery.circliful.min.js")
+    @Scripts.Render("~/Scripts/Goals/viewModel.js")
+    @Scripts.Render("~/Scripts/pickaday.js")
 
 <script>
     $(document).ready(function () {
@@ -21,17 +48,19 @@
         $('#xboxGoal').circliful();
 
         $('#newGoal').circliful();
+
+        var picker = new Pikaday({ field: document.getElementById('datepicker') });
     });
 </script>
 }
 
 @section Styles {
 @Styles.Render("~/Content/circliful.css")
+@Styles.Render("~/Content/modal.css")
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 @Styles.Render("~/Content/circle.css")
+@Styles.Render("~/Content/pickaday.css")
 }
-
-
 
 
 
