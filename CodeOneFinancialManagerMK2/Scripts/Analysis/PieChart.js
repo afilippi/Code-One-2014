@@ -1,9 +1,18 @@
 ﻿$(function () {
     $('#pieContainer').highcharts({
+        colors: [
+    '#BDCFD1',
+    '#0D723C',
+    '#A0A1A3',
+    '#4AAA42',
+        '#ec6b2f',
+    '#666A70'
+        ],
         chart: {
             plotBackgroundColor: null,
-            plotBorderWidth: 1,//null,
-            plotShadow: false
+            plotBorderWidth: null,
+            plotShadow: false,
+            backgroundColor: null
         },
         title: {
             text: "Last Month's Spending by Category"

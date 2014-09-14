@@ -263,7 +263,7 @@
           <Property Name="Date" Type="DateTime" Precision="3" />
           <Property Name="AccountID" Type="Int32" />
         </EntityType>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

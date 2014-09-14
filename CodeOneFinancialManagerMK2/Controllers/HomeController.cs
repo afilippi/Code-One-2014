@@ -43,11 +43,6 @@ namespace CodeOneFinancialManagerMK2.Controllers
             return View();
         }
 
-        public ActionResult Dashboard()
-        {
-            return View();
-        }
-
         public ActionResult Analysis()
         {
             List<Transaction> recentTransactions;
