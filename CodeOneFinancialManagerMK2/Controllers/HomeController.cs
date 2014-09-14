@@ -74,5 +74,9 @@ namespace CodeOneFinancialManagerMK2.Controllers
         var hubContext = GlobalHost.ConnectionManager.GetHubContext<AlertHub>();
         hubContext.Clients.All.addNewMessageToPage("9/19", "Something Something");
     }
+    
+    public ActionResult Goals()
+    {
+    	return View();
     }
 }

@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Goals";
+}
+
+<h2>Goals</h2>
+<hr />
+<div style="display: inline-block;" id="disneyGoal" data-dimension="250" data-text="85%" data-info="Disneyland" data-width="30" data-fontsize="38" data-percent="4" data-fgcolor="#0D723C" data-bgcolor="#BDCFD1" data-fill="transparent" data-total="4000" data-part="3400" data-icon="long-arrow-up" data-icon-size="28" data-icon-color="#fff"></div>
+<div style="display: inline-block;" id="xboxGoal" data-dimension="250" data-text="28%" data-info="Xbox One" data-width="30" data-fontsize="38" data-percent="4" data-fgcolor="#0D723C" data-bgcolor="#BDCFD1" data-fill="transparent" data-total="500" data-part="140" data-icon="long-arrow-up" data-icon-size="28" data-icon-color="#fff"></div>
+<div style="display: inline-block;" id="hondaGoal" data-dimension="250" data-text="22%" data-info="Honda Accord" data-width="30" data-fontsize="38" data-percent="35" data-fgcolor="#0D723C" data-bgcolor="#BDCFD1" data-fill="transparent" data-total="26000" data-part="5600" data-icon="long-arrow-up" data-icon-size="28" data-icon-color="#fff"></div>
+
+<div class="round-button"><div class="round-button-circle"><a href="http://example.com" class="round-button">Button!!</a></div></div>
+@section Scripts {
+    @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
+    @Scripts.Render("~/Scripts/jquery.circliful.min.js")
+
+<script>
+    $(document).ready(function () {
+        $('#disneyGoal').circliful();
+        $('#hondaGoal').circliful();
+        $('#xboxGoal').circliful();
+
+        $('#newGoal').circliful();
+    });
+</script>
+}
+
+@section Styles {
+@Styles.Render("~/Content/circliful.css")
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+@Styles.Render("~/Content/circle.css")
+}
+
+
+
+
+

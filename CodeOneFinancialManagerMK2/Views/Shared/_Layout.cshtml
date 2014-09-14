@@ -3,13 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>First National Bank</title>
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/knockout")
     @Styles.Render("~/Content/starter-template.css")
     @RenderSection("styles", required: false)
 
-    <title>Starter Template for Bootstrap</title>
+    <link rel="icon" href="@Url.Content("~/images/favicon.ico")" />
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -25,9 +26,9 @@
             </a>
             <div class="nav">
                 <ul id="navigation-menu">
-                    <li class="nav-link">@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li class="nav-link">@Html.ActionLink("Analysis", "Analysis", "Home")</li>
+                    <li class="nav-link"><span>@Html.ActionLink("Dashboard", "Index", "Home")</span></li>
                     <li class="nav-link">@Html.ActionLink("Action Plans", "IFTT", "Home")</li>
+                    <li class="nav-link">@Html.ActionLink("Goals", "Goals", "Home")</li>
                     @Html.Partial("_LoginPartial")
                 </ul>
             </div>
@@ -35,9 +36,9 @@
     </header>
 
     <div class="wrapper" style="max-width: 85%">
-        <div class="alerts-container">
+        <div class="alerts-container" style="background-color: #EEE;">
             <div class="alerts-header">
-                <h4>Alerts</h4>
+                <h4>Recent Alerts</h4>
             </div>
             <div class="alert-group">
                 <div class="alert">
@@ -61,7 +62,7 @@
             </div> <!-- alert group -->
         </div>
 
-        <div class="body-container" style="padding: 30px">
+        <div class="body-container" style="padding: 30px; border-radius: 3px;">
                 @RenderBody()
         </div>
     </div>

@@ -41,6 +41,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNet.SignalR.Core">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.1.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Owin.1.2.2\lib\net45\Microsoft.AspNet.SignalR.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SqlServer">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SqlServer.2.1.1\lib\net45\Microsoft.AspNet.SignalR.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.1.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -223,6 +235,8 @@
     <Compile Include="Goal.cs">
       <DependentUpon>BenderModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Hubs\AlertHub.cs" />
+    <Compile Include="Hubs\Startup.cs" />
     <Compile Include="IFTT.cs">
       <DependentUpon>BenderModel.tt</DependentUpon>
     </Compile>
@@ -250,17 +264,23 @@
     <Content Include="Content\actionplan.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\circliful.css" />
     <Content Include="Content\dashboard.css" />
     <Content Include="Content\dropdown.css" />
     <None Include="Content\Sass\actionplan.scss" />
+    <None Include="Content\Sass\selectric.scss" />
+    <None Include="Content\Sass\analysis.scss" />
+    <None Include="Content\Sass\index-dashboard.scss" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\favicon.ico" />
     <Content Include="images\logo.png" />
     <Content Include="images\select-arrow-close.png" />
     <Content Include="images\select-arrow-open.png" />
     <Content Include="Scripts\ammap.js" />
     <Content Include="Scripts\Analysis\BarChart.js" />
+    <Content Include="Scripts\Analysis\LineChart.js" />
     <Content Include="Scripts\Analysis\MapChart.js" />
     <Content Include="Scripts\Analysis\PieChart.js" />
     <Content Include="Scripts\Analysis\viewModel.js" />
@@ -388,35 +408,43 @@
     <Content Include="Content\Sass\neat\settings\_visual-grid.scss" />
     <Content Include="Content\Sass\neat\_neat-helpers.scss" />
     <Content Include="Content\Sass\neat\_neat.scss" />
-    <Content Include="Content\starter-template.scss" />
     <Content Include="Content\_colors.scss" />
     <Content Include="Content\_header.scss" />
     <Content Include="Content\_mixins.scss" />
+    <Content Include="Content\Sass\_reset.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\highcharts.js" />
     <Content Include="Scripts\IFTT\dropdown.js" />
+    <Content Include="Scripts\IFTT\iftt-view.js" />
     <Content Include="Scripts\IFTT\viewModel.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+<<<<<<< HEAD
+    <Content Include="Scripts\jquery.signalR-2.1.1.js" />
+    <Content Include="Scripts\jquery.signalR-2.1.1.min.js" />
+=======
+    <Content Include="Scripts\jquery.circliful.min.js" />
+    <Content Include="Scripts\jquery.selectric.js" />
+>>>>>>> 6080f036a81fa2fcb08eab0d719c93a598168477
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knob.js" />
     <Content Include="Scripts\knockout-3.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\navigation.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-<<<<<<< HEAD
-    <Content Include="Scripts\Util\Util.js" />
-=======
+    <Content Include="Scripts\TempUtil.js" />
     <Content Include="Scripts\usaLow.js" />
->>>>>>> b0ffd133469dee3c888fcf354bf723441110e0fe
+    <Content Include="Scripts\Util\Util.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Home\Speech.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Views\Home\Test.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -449,6 +477,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Analysis.cshtml" />
     <Content Include="Views\Home\IFTT.cshtml" />
+<<<<<<< HEAD
+    <Content Include="Views\Home\Test.cshtml" />
+=======
+    <Content Include="Views\Home\Goals.cshtml" />
+>>>>>>> 6080f036a81fa2fcb08eab0d719c93a598168477
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,6 +1,6 @@
 ﻿$(function () {
     $(document).ready(function () {
-        var chart = new Highcharts.Chart({
+        barchart = new Highcharts.Chart({
             chart: {
                 renderTo: 'container',
                 type: 'column',
@@ -13,7 +13,7 @@
                 }
             },
             xAxis: {
-                categories: ['May', 'June', 'July', 'August', 'This Month']
+                categories: ['May', 'June', 'July', 'August', 'MTD']
             },
             yAxis: {
                 plotLines: [{
@@ -47,8 +47,7 @@
                     }],
             credits: false,
             legend: { enabled: false },
-            tooltip: { enabled: false },
+            tooltip: { enabled: false }
         });
     });
-
 });

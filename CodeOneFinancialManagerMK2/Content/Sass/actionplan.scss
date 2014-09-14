@@ -12,24 +12,44 @@
 
 }
 
+.iftt-wrapper {
+    @include outer-container;
+    border-bottom: thin solid $light-gray;
+
+}
+
 .trigger-body {
     @include span-columns(6);
 
+    .header-wrapper {
+        @include span-columns(1 of 6);
+    }
+
+    .select-wrapper {
+        @include span-columns(5 of 6);
+        @include omega();
+    }
 }
 
 .action-body {
     @include span-columns(6);
     @include omega();
+
+    .header-wrapper {
+        @include span-columns(2 of 6);
+    }
+
+    .select-wrapper {
+        @include span-columns(4 of 6);
+    }
 }
+
 
 .item-callout {
     display: inline;
     vertical-align: bottom;
 }
 
-.dropdown-container {
-    margin-left: 0.5em;
-}
 
 .item-dropdown {
     position: relative; 
@@ -43,7 +63,6 @@
 
 .action-selected-info {
     @include span-columns(6);
-    @include omega();
 }
 
 .actionplan-creation-body {
@@ -52,23 +71,56 @@
 
 .creation-row {
     @include outer-container;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .trigger-cell {
     @include span-columns(6);
-    @include outer-container;
+    visibility: hidden;
+
+    .dropdown-label {
+        @include span-columns(3 of 6);
+        font-weight: bold;
+    }
+
+    .input-wrapper {
+        @include span-columns(3 of 6);
+        @include omega();
+    }
+
 }
 
-span .dropdown-label {
-    font-weight: bold;
-}
 
 .action-cell {
     @include span-columns(6);
     @include omega();
-    @include outer-container;
+    visibility: hidden;
+
+    .dropdown-label {
+        @include span-columns(3 of 6);
+        font-weight: bold;
+    }
+
+    .input-wrapper {
+        @include span-columns(3 of 6);
+        @include omega();
+    }
 }
 
-.cell-content {
+
+#action-1-contactinfo {
+    display: none;
+}
+
+#action-1-amount {
+    display: none;
+}
+
+#trigger-2-textfield {
+    display: none;
+}
+
+#trigger-2-select {
     display: none;
 }

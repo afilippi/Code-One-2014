@@ -1,4 +1,13 @@
-﻿ko.bindingHandlers.currency = {
+﻿jQuery.fn.visible = function () {
+    return this.css('visibility', 'visible');
+};
+
+jQuery.fn.invisible = function () {
+    return this.css('visibility', 'hidden');
+};
+
+
+ko.bindingHandlers.currency = {
     symbol: ko.observable('$'),
     update: function (element, valueAccessor, allBindingsAccessor) {
         return ko.bindingHandlers.text.update(element, function () {
@@ -103,86 +112,100 @@ var updateTriggerForSpending = function () {
     $('#trigger-2 .dropdown-label').text('Spends How Much?');
     $('#trigger-3 .dropdown-label').text('In What Time Period?');
     $('#trigger-4 .dropdown-label').text('What Category?');
-    $('#trigger-1 .cell-content').show();
-    $('#trigger-2 .cell-content').show();
-    $('#trigger-3 .cell-content').show();
-    $('#trigger-4 .cell-content').show();
+    $('#trigger-2-textfield').show();
+    $('#trigger-2 .selectricWrapper').hide();
+    $('#trigger-1').visible();
+    $('#trigger-2').visible();
+    $('#trigger-3').visible();
+    $('#trigger-4').visible();
 };
 
 var updateTriggerForWithdraw = function () {
     $('#trigger-1 .dropdown-label').text('Who\'s Withdrawing?');
     $('#trigger-2 .dropdown-label').text('Withdrawl Amount');
-    $('#trigger-1 .cell-content').show();
-    $('#trigger-2 .cell-content').show();
-    $('#trigger-3 .cell-content').hide();
-    $('#trigger-4 .cell-content').hide();
+    $('#trigger-2-textfield').show();
+    $('#trigger-2 .selectricWrapper').hide();
+    $('#trigger-1').visible();
+    $('#trigger-2').visible();
+    $('#trigger-3').invisible();
+    $('#trigger-4').invisible();
 };
 
 var updateTriggerForDeposit = function () {
     $('#trigger-1 .dropdown-label').text('Who\'s Depositing?');
     $('#trigger-2 .dropdown-label').text('Amount of Deposit');
-    $('#trigger-1 .cell-content').show();
-    $('#trigger-2 .cell-content').show();
-    $('#trigger-3 .cell-content').hide();
-    $('#trigger-4 .cell-content').hide();
+    $('#trigger-2-textfield').show();
+    $('#trigger-2 .selectricWrapper').hide();
+    $('#trigger-1').visible();
+    $('#trigger-2').visible();
+    $('#trigger-3').invisible();
+    $('#trigger-4').invisible();
 };
 
 var updateTriggerForGoal = function () {
     $('#trigger-1 .dropdown-label').text('Who\'s Goal?');
     $('#trigger-2 .dropdown-label').text('Which Goal?');
-    $('#trigger-1 .cell-content').show();
-    $('#trigger-2 .cell-content').show();
-    $('#trigger-3 .cell-content').hide();
-    $('#trigger-4 .cell-content').hide();
+    $('#trigger-2-textfield').hide();
+    $('#trigger-2 .selectricWrapper').show();
+    $('#trigger-1').visible();
+    $('#trigger-2').visible();
+    $('#trigger-3').invisible();
+    $('#trigger-4').invisible();
 };
 
 var updateTriggerForEmpty = function () {
-    $('#trigger-1 .cell-content').hide();
-    $('#trigger-2 .cell-content').hide();
-    $('#trigger-3 .cell-content').hide();
-    $('#trigger-4 .cell-content').hide();
+    $('#trigger-1').invisible();
+    $('#trigger-2').invisible();
+    $('#trigger-3').invisible();
+    $('#trigger-4').invisible();
 };
 
 var updateActionForEmail = function () {
     $('#action-1 .dropdown-label').text('Email Address');
+    $('#action-1-contactinfo').show();
+    $('#action-1-amount').hide();
     $('#action-2 .dropdown-label').text('N/A - Remove');
-    $('#action-3 .dropdown-label').text('N/A - Remove');
-    $('#action-4 .dropdown-label').text('N/A - Remove');
+    $('#action-1').visible();
+    $('#action-2').invisible();
 };
 
 var updateActionForText = function () {
     $('#action-1 .dropdown-label').text('Phone Number');
-    $('#action-2 .dropdown-label').text('N/A - Remove');
-    $('#action-3 .dropdown-label').text('N/A - Remove');
-    $('#action-4 .dropdown-label').text('N/A - Remove');
+    $('#action-1-contactinfo').show();
+    $('#action-1-amount').hide();
+    $('#action-1').visible();
+    $('#action-2').invisible();
 };
 
 var updateActionForCall = function () {
     $('#action-1 .dropdown-label').text('Phone Number');
-    $('#action-2 .dropdown-label').text('N/A - Remove');
-    $('#action-3 .dropdown-label').text('N/A - Remove');
-    $('#action-4 .dropdown-label').text('N/A - Remove');
+    $('#action-1-contactinfo').show();
+    $('#action-1-amount').hide();
+    $('#action-1').visible();
+    $('#action-2').invisible();
 };
 
 var updateActionForAlert = function () {
-    $('#action-1 .dropdown-label').text('N/A - Remove');
-    $('#action-2 .dropdown-label').text('N/A - Remove');
-    $('#action-3 .dropdown-label').text('N/A - Remove');
-    $('#action-4 .dropdown-label').text('N/A - Remove');
+    $('#action-1').invisible();
+    $('#action-2').invisible();
+    $('#action-1-contactinfo').hide();
+    $('#action-1-amount').hide();
 };
 
 var updateActionForTransfer = function () {
     $('#action-1 .dropdown-label').text('Transfer Amount');
     $('#action-2 .dropdown-label').text('Destination Account');
-    $('#action-3 .dropdown-label').text('N/A - Remove');
-    $('#action-4 .dropdown-label').text('N/A - Remove');
+    $('#action-1-contactinfo').hide();
+    $('#action-1-amount').show();
+    $('#action-1').visible();
+    $('#action-2').visible();
 };
 
 var updateActionForEmpty = function () {
-    $('#action-1 .dropdown-label').text('Who\'s Goal?');
-    $('#action-2 .dropdown-label').text('Which Goal?');
-    $('#action-3 .dropdown-label').text('N/A - Remove');
-    $('#action-4 .dropdown-label').text('N/A - Remove');
+    $('#action-1-contactinfo').hide();
+    $('#action-1-amount').hide();
+    $('#action-1').invisible();
+    $('#action-2').invisible();
 };
 
 IFTTViewModel.selectedTrigger.subscribe(function (newTrigger) {
@@ -203,7 +226,6 @@ IFTTViewModel.selectedTrigger.subscribe(function (newTrigger) {
             break;
         default:
             updateTriggerForEmpty();
-            console.log('Trigger blank state');
             break;
     }
 });
@@ -229,7 +251,6 @@ IFTTViewModel.selectedAction.subscribe(function (newAction) {
             break;
         default:
             updateActionForEmpty();
-            console.log('Action blank state');
             break;
     }
 });
