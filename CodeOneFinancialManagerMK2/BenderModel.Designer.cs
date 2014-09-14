@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Jake\Documents\Code-One-2014\CodeOneFinancialManagerMK2\BenderModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\David\Documents\src\Code-One-2014\CodeOneFinancialManagerMK2\BenderModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

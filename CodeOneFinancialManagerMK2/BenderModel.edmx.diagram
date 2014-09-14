@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2fd65524822e44a289e501fa928f6b21" Name="Diagram1" >
+      <Diagram DiagramId="2fd65524822e44a289e501fa928f6b21" Name="Diagram1" ZoomLevel="74" >
         <EntityTypeShape EntityType="BenderModel.Account" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="BenderModel.Action" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="BenderModel.Budget" Width="1.5" PointX="0.75" PointY="3.75" />
