@@ -12,4 +12,4 @@
     }
 };
 
-ko.applyBindings(goalViewModel);
+ko.applyBindings(goalViewModel, $(".body-container")[0]);
