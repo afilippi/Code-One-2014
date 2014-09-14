@@ -191,6 +191,7 @@
     <Compile Include="Alert.cs">
       <DependentUpon>BenderModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Hub\AlertHub.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -235,7 +236,6 @@
     <Compile Include="Goal.cs">
       <DependentUpon>BenderModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Hub\AlertHub.cs" />
     <Compile Include="IFTT.cs">
       <DependentUpon>BenderModel.tt</DependentUpon>
     </Compile>
@@ -470,6 +470,7 @@
     <Content Include="Views\Home\Analysis.cshtml" />
     <Content Include="Views\Home\IFTT.cshtml" />
     <Content Include="Views\Home\Goals.cshtml" />
+    <Content Include="Views\Home\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
