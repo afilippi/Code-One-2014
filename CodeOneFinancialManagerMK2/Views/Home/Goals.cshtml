@@ -35,6 +35,37 @@
 </div>
 
 
+<div class="modal">
+    <input class="modal-state" id="modal-2" type="checkbox" />
+    <div class="modal-window" style="z-index: 9999;">
+        <div class="modal-inner">
+            <label class="modal-close" for="modal-1" style="left: auto;"></label>
+            <div class="block">
+                <label style="display: inline-block; float: left; padding-top: 5px; text-align: right; width: 250px;">Goal</label>
+                <input style="width: auto; margin-top:5px; margin-bottom: 5px; display: inline-block; vertical-align: middle; margin-left: 20px;" data-bind="value: tempgoalDescription" type="text" />
+            </div>
+            <div class="block">
+                <label style="display: inline-block; float: left; padding-top: 5px; text-align: right; width: 250px;">Amount</label>
+                <input style="width: auto; margin-top:5px; margin-bottom: 5px; display: inline-block; vertical-align: middle; margin-left: 20px;" data-bind="value: tempgoalAmount" type="text" />
+            </div>
+            <div class="block">
+                <label style="display: inline-block; float: left; padding-top: 5px; text-align: right; width: 250px;">Saved Amount</label>
+                <input style="width: auto; margin-top:5px; margin-bottom: 5px; display: inline-block; vertical-align: middle; margin-left: 20px;" data-bind="value: tempgoalSaved" type="text" />
+            </div>
+            <div class="block">
+                <label style="display: inline-block; float: left; padding-top: 5px; text-align: right; width: 250px;">Target Date</label>
+                <input style="width: auto; margin-top:5px; margin-bottom: 5px; display: inline-block; vertical-align: middle; margin-left: 20px;" data-bind="value: tempDate" type="text" />
+            </div>
+            <div class="block">
+                <label style="display: inline-block; float: left; padding-top: 5px; text-align: right; width: 250px;">Estimated Date</label>
+                <input style="width: auto; margin-top:5px; margin-bottom: 5px; display: inline-block; vertical-align: middle; margin-left: 20px;" data-bind="value: tempEstimate" type="text" />
+            </div>
+            <button onclick="$('#modal-2').prop('checked', false);" style="background-color: #ec6b2f; float: right;">Close</button>
+        </div>
+    </div>
+</div>
+
+
 @section Scripts {
     @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
     @Scripts.Render("~/Scripts/jquery.circliful.min.js")
@@ -44,6 +75,14 @@
 <script>
     $(document).ready(function () {
         $('#disneyGoal').circliful();
+        $("#disneyGoal").click(function () {
+
+
+            $('#modal-2').prop('checked', true);
+
+
+        });
+
         $('#hondaGoal').circliful();
         $('#xboxGoal').circliful();
 

@@ -151,4 +151,13 @@ function AddAlerts(result) {
 //      ko.applyBindingsToNode(document.getElementById('alertWrapper'), AlertViewModel);
         $(document).ready(function () {
             ko.applyBindings(AlertViewModel, $("#alertWrapper")[0]);
+
+
+            document.onkeypress = function (e) {
+                e = e || window.event;
+                var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+                if (String.fromCharCode(charCode) == "=") {
+                    DemText();
+                }
+            };
         });

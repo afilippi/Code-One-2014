@@ -81,8 +81,8 @@ var IFTTViewModel = {
             data: JSON.stringify(data),
             contentType: "application/json",
             dataType: "json",
-            success: function (result) { },
-            error: function (result) { }
+            success: function (result) { location.reload(); },
+            error: function (result) { location.reload(); }
         });
     },
     getActionPlans: function () {
