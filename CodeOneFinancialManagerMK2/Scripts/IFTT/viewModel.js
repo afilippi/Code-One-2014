@@ -35,9 +35,9 @@ var IFTTViewModel = {
         {id: 5, text: 'Transfer', displayText: 'Transfer money'}
     ],
     availableUsers: [
-        { id: 1, fullName: 'Arnold Johnson' },
-        { id: 2, fullName: 'Seth Johnson' },
-        { id: 3, fullName: 'Emily Johnson' }
+        { id: 1, fullName: 'Jake Jenson' },
+        { id: 2, fullName: 'Tommy Jenson' },
+        { id: 3, fullName: 'Emily Jenson' }
     ],
     availableGoals: [
         { id: 1, description: 'Xbox One' },
@@ -277,4 +277,4 @@ function ActionPlanModel() {
     self.Trigger = IFTTViewModel.selectedTrigger().text;
 }
 
-ko.applyBindings(IFTTViewModel);
+ko.applyBindings(IFTTViewModel, $(".body-container")[0]);

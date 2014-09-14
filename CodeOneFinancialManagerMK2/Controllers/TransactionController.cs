@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Net.Mail;
 using System.Net;
 using Twilio;
+using Microsoft.AspNet.SignalR;
 
 namespace CodeOneFinancialManagerMK2.Controllers
 {
@@ -64,7 +65,7 @@ namespace CodeOneFinancialManagerMK2.Controllers
             switch (type)
             {
                 case "OverSpend":
-                    messageBody = "Hello, This is First National Informing you that one of your credit cards has spent $200 while its budget was set to $100.";
+                    messageBody = "Hello, This is First National Informing you that one of your credit cards has spent $200.00 while its budget was set to $100.00";
                     break;
                 case "Withdrawal":
                     messageBody = "Hello, This is First National Informing you that you have had a withdrawal.";
@@ -77,9 +78,34 @@ namespace CodeOneFinancialManagerMK2.Controllers
                     break;
             }
 
-            var message = twilio.SendMessage("+18559769895", "+14025985573", messageBody);
+            Hit();
+            //var message = twilio.SendMessage("+18559769895", "+14025985573", messageBody);
+            //Console.WriteLine(message.Sid);
+        }
 
-            Console.WriteLine(message.Sid);
+        public void Hit()
+        {
+            var hubContext = GlobalHost.ConnectionManager.GetHubContext<AlertHub>();
+            hubContext.Clients.All.addNewMessageToPage(DateTime.Now.ToString("g"), "Tommy Jenson Spent $200.00 at Harrah's Casino");
+
+            try
+            {
+                using (BenderEntities context = new BenderEntities())
+                {
+                    Alert alert = new Alert();
+                    alert.Id = context.Alerts.Count() + 1;
+                    alert.Date = DateTime.Now;
+                    alert.Descrption = "Tommy Jenson Spent $200.00 at Harrah's Casino";
+                    alert.AccountID = 1;
+                    context.Alerts.Add(alert);
+                    context.SaveChanges();
+
+                }
+            }
+            catch(Exception e)
+            {
+
+            }
         }
 
         public void MakeTestText()

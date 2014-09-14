@@ -82,10 +82,14 @@ namespace CodeOneFinancialManagerMK2.Controllers
 
         public class EventAlert
         {
-            public int Id { get; set; }
+            public string Date { get; set; }
+            public string Description { get; set; }      
+        }
+
+        public class TempAlert
+        {
             public string Descrption { get; set; }
             public DateTime Date { get; set; }
-            public int AccountID { get; set; }
         }
 
         [Serializable]
@@ -109,14 +113,20 @@ namespace CodeOneFinancialManagerMK2.Controllers
             using (BenderEntities context = new BenderEntities())
             {
                 int alert = context.Actions.Where(x => x.Type.Equals("Alert")).FirstOrDefault().Id;
-                response.Alerts = context.Alerts.Where(x => x.AccountID == request.AccountID).Select(y => new EventAlert()
+                TempAlert[] tempalerts = context.Alerts.Where(x => x.AccountID == request.AccountID).Select(y => new TempAlert()
                 {
-                   Id = y.Id,
                    Descrption = y.Descrption,
                    Date = y.Date ??  DateTime.Now,
-                   AccountID = y.AccountID ?? 1,
                   
                 }).ToArray();
+
+
+                response.Alerts = tempalerts.Select(x => new EventAlert()
+                    {
+                        Description = x.Descrption,
+                        Date = x.Date.ToString("g")
+                    }
+                    ).ToArray();
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }

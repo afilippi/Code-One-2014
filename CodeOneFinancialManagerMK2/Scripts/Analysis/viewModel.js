@@ -158,4 +158,4 @@ AnalysisViewModel.selectedAccount.subscribe(function (newValue) {
         $('#chartdiv > div > div:nth-child(1) > svg > g:nth-child(16)').remove();
     }
 });
-ko.applyBindings(AnalysisViewModel);
+ko.applyBindings(AnalysisViewModel, $(".body-container")[0]);
