@@ -36,8 +36,8 @@ var IFTTViewModel = {
         {id: 3, description: 'New Car'}
     ],
     availableTimeFrames: [
-        { id: 1, text: 'A Week' },
-        { id: 2, text: 'A Month' }
+        { id: 1, text: 'Once' },
+        { id: 2, text: 'Weekly' }
     ],
     availableCategories: [
         {id: 0, text: 'Anywhere'},
@@ -60,8 +60,42 @@ var IFTTViewModel = {
     email: ko.observable(),
     phone: ko.observable(),
     targetAmount: ko.observable(),
-    selectedAccount: ko.observable()
+    selectedAccount: ko.observable(),
+    createActionPlan: function () {
 
+        var serviceURL = '/Trigger/PostTrigger';
+        var data = new ActionPlanModel();
+
+        $.ajax({
+            type: "POST",
+            url: serviceURL,
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            dataType: "json",
+            success: function (result) { },
+            error: function (result) { }
+        });
+    },
+    getActionPlans: function () {
+
+        var serviceURL = '/Trigger/GetTrigger';
+        var data = new ActionPlanRequest();
+
+        $.ajax({
+            type: "POST",
+            url: serviceURL,
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            dataType: "json",
+            success: function (result) {
+                ShowActionPlans(result);
+            },
+            error: function (result) {
+                ShowActionPlans(result);
+            }
+        });
+
+    }
 };
 
 var updateTriggerForSpending = function () {
@@ -201,8 +235,25 @@ IFTTViewModel.selectedAction.subscribe(function (newAction) {
 });
 
 
-IFTTViewModel.selectedAction.subscribe(function (newAction) {
+function ShowActionPlans(result) {
+    var thing = result;
+}
 
-});
+function ActionPlanRequest() {
+    var self = this;
+    self.AccountID = 1;
+}
+
+function ActionPlanModel() {
+    var self = this;
+    self.id = 1;
+    self.AccountID = 1;
+    self.ActionID = IFTTViewModel.selectedAction().text;
+    self.CurrentAmount = 0;
+    self.TriggerAmount = IFTTViewModel.amount();
+    self.MCC = IFTTViewModel.selectedCategory().text;
+    self.TimeFrame = IFTTViewModel.selectedTimeFrame().text;
+    self.Trigger = IFTTViewModel.selectedTrigger().text;
+}
 
 ko.applyBindings(IFTTViewModel);

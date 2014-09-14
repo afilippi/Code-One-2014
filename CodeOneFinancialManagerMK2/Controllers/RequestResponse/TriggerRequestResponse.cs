@@ -7,9 +7,10 @@ namespace CodeOneFinancialManagerMK2.Controllers.RequestResponse
 {
     public class GetTriggerRequest
     {
-        public int AccountID;
+        public int AccountID { get; set; }
     }
 
+    [Serializable]
     public class GetTriggerResponse
     {
         public List<UserTrigger> Triggers;
@@ -30,14 +31,14 @@ namespace CodeOneFinancialManagerMK2.Controllers.RequestResponse
 
     public class PostTriggerRequest
     {
-        public int id;
-        public int AccountID;
-        public String ActionID;
-        public float CurrentAmount;
-        public float TriggerAmount;
-        public String MCC;
-        public String TimeFrame;
-        public String Trigger;
+        public int id { get; set; }
+        public int AccountID { get; set; }
+        public String ActionID { get; set; }
+        public float CurrentAmount { get; set; }
+        public float TriggerAmount { get; set; }
+        public String MCC { get; set; }
+        public String TimeFrame { get; set; }
+        public String Trigger { get; set; }
     }
 
     public class PostTriggerResponse

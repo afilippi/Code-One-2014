@@ -31,6 +31,8 @@ namespace CodeOneFinancialManagerMK2.Controllers
             return response;
         }
 
+
+        [HttpPost]
         public PostGoalResponse PostGoal(PostGoalRequest request)
         {
             PostGoalResponse response = new PostGoalResponse();
