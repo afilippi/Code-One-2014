@@ -257,6 +257,7 @@
     <Content Include="Scripts\Analysis\BarChart.js" />
     <Content Include="Scripts\Analysis\MapChart.js" />
     <Content Include="Scripts\Analysis\PieChart.js" />
+    <Content Include="Scripts\Analysis\viewModel.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="BenderModel.edmx">
