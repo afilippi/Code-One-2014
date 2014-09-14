@@ -14,6 +14,7 @@
     addGoal: function () {
         $('#modal-1').prop('checked', false);
         //Save goal here
+        insertNewGoal($('#inputGoalDescription').val(), 0, $('#inputGoalAmount').val());
     }
 };
 
