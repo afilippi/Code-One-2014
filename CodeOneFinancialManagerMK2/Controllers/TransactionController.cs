@@ -79,8 +79,8 @@ namespace CodeOneFinancialManagerMK2.Controllers
             }
 
             Hit();
-            //var message = twilio.SendMessage("+18559769895", "+14025985573", messageBody);
-            //Console.WriteLine(message.Sid);
+            var message = twilio.SendMessage("+18559769895", "+14025985573", messageBody);
+            Console.WriteLine(message.Sid);
         }
 
         public void Hit()
